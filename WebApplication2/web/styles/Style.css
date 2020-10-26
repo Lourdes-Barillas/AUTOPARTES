@@ -1,0 +1,136 @@
+body{
+    font-family: monospace;
+    background-color: #cccccc;
+}
+header{width: 100%;
+       color: #d9d9d9;
+       overflow: hidden; 
+       background:#252932;/*color del encabezado*/ 
+       margin-bottom: 20px; }
+#ima{
+    padding: 30px 0px;
+    height: 200px;
+    width: 160px;
+    font-size: 50px;
+    line-height: 500px;
+    float: left;
+    padding-right: 25px;
+}
+*{
+    margin: 0;
+    padding: 0;
+    /*color: #d9d9d9;*/
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+footer{
+    color: #d9d9d9;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background: #111;
+    
+}
+.main_content{
+    display: flex;
+}
+.main_content .box{
+    flex-basis: 50%;
+    padding: 10px 20px;
+}
+.box h2{
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.box .content{
+    margin: 3px 0 0 0;
+}
+.left .content.social{
+    margin: 20px 0 0 0;   
+}
+.left .content.social a{
+    padding: 0 2px;
+}
+.left .content.social a span{
+    height: 40px;
+    width: 400px;
+    background: #1a1a1a;
+    line-height: 40px;
+    text-align: center;
+}
+/*  header*/
+/*centrado en el header*/
+.wrapper{width: 90%; 
+        max-width: 1200px;
+        margin:auto; 
+        overflow: hidden;}
+header .logo{
+    color:#f56f3a;
+    font-size: 50px;
+    line-height: 200px;
+    float: left;
+}
+/*menu*/
+header nav{ float: right;
+            line-height:200px;   
+}
+
+header nav a{
+    display: inline-block;
+    color: #ffffff; 
+    text-decoration: none;
+    padding:10px 20px; 
+    line-height: normal; 
+    font-size: 20px;
+    font-weight: bold;
+    -webkit-transition:all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+border-radius: 50px;}
+header nav a:hover{
+    background:#f56f3a;  
+}
+/*tabla de productos */
+
+
+.imP{
+    height: 320px;
+    width: 350px;
+    margin: auto;
+    padding: auto;
+    padding-top: auto;
+}
+
+.divs{
+    font-family: Helvetica;
+    color: #000000;
+    height: 165px;
+    width: 350px;
+    background-color:#FFFFFF;
+    margin: auto;
+}
+#tablaC{
+    width: 320px;
+    border-color: #000000;
+    margin:auto; 
+    overflow: hidden;
+    
+}
+#ButtonCompra{
+    height: 40px;
+    width: 120px; 
+}
+.tablWrapper{
+    width: 90%; 
+        max-width: 400px;
+        margin:auto; 
+        overflow: hidden;   
+}
+.divp{
+    height: 320px;
+    width: 350px;
+    background-color: #ffffff;
+}
