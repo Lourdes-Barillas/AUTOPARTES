@@ -25,6 +25,15 @@ public class Orden {
     private int estado;
     private int diasEnvio;
     
+    /**
+     * idCliente, Double _precioEnvio, String _tipoEnvio, int _estado, int _dias
+     * Orden_ClienteId, Orden_PrecioDeEnvio, Orden_TipoEnvio, Orden_Estado, Orden_DiasEnvio
+     * @param _idCliente
+     * @param _precioEnvio
+     * @param _tipoEnvio
+     * @param _estado
+     * @param _dias 
+     */
     public Orden(int _idCliente, Double _precioEnvio, String _tipoEnvio, int _estado, int _dias){
         this.cliente.setId(_idCliente);
         this.precioEnvio = _precioEnvio;
@@ -36,7 +45,10 @@ public class Orden {
     public Orden(){
         
     }
-    
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
     public void setId(int id) {
         this.id = id;
     }
@@ -68,5 +80,10 @@ public class Orden {
     public int getdiasEnvio() {
         return this.diasEnvio;
     }
-    
+
+    @Override
+    public String toString() {
+        return this.fecha + " " + this.tipoEnvio + " " + this.diasEnvio + " " + this.estado + " id:" + this.id + " " + this.precioEnvio; //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

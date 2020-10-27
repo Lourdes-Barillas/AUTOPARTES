@@ -13,7 +13,7 @@ public class Producto {
     private int idProducto;
     private String producto;
     private Double precio;
-    
+    private int cantidad;
     public Producto(){
       //se inicializa el sigId aquí
         //getIdProducto
@@ -35,8 +35,19 @@ public class Producto {
         this.precio = precio;
     }
     
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+    
     public int getIdProducto() {
         return idProducto;
+    }
+    
+    
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
     }
 
     public String getProducto() {

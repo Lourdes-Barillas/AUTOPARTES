@@ -1,5 +1,6 @@
 
 import CRUD.Create;
+import CRUD.Read;
 import Globalpackage.GlobalVariables;
 import MasterClases.Children.Empresarial;
 import MasterClases.Children.Individual;
@@ -38,7 +39,9 @@ public class Prueba {
         //GlobalVariables gg = new GlobalVariables();
         //System.out.println(gg.fecha);
         //main.insertOrden();
-        main.insertItemOrden();
+        //main.insertItemOrden();
+        Read read = new Read();
+        System.out.println(read.readProductos());
     }
     
     
