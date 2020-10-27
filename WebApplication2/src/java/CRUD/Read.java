@@ -9,6 +9,7 @@ import Globalpackage.GlobalVariables;
 import MasterClases.Orden;
 import MasterClases.Producto;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -71,13 +72,11 @@ public class Read {
         List<Producto> productos = new ArrayList<Producto>();
         Producto producto = null;
         try{
-            JOptionPane.showMessageDialog(null, "Entró al try");
-            Connection miConexion = globalvariables.connection();
+            Connection miConexion = DriverManager.getConnection(globalvariables.db,globalvariables.user, globalvariables.password);
             JOptionPane.showMessageDialog(null, "Base obtenida");
             //Class.forName("org.postgresql.Driver");
             Statement st = miConexion.createStatement();
             traerDatos = traerDatos + "\"Productos\";";
-            JOptionPane.showMessageDialog(null, traerDatos);
             ResultSet result = st.executeQuery(traerDatos);
             while(result.next()){
                 prod_Id = result.getString("Prod_Id");

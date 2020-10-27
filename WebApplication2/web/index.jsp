@@ -4,6 +4,13 @@
     Author 
 : deleo
 --%>
+<%@page import="javax.swing.JOptionPane"%>
+<%@page import="java.util.List"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="Globalpackage.GlobalVariables"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="MasterClases.Producto"%>
 <%@page import="CRUD.Read"%>
@@ -34,17 +41,40 @@
         </header>
         <%--scroll productos --%>
         
-        <%
-            //Read read = new Read();
-            //ArrayList<Producto> productos = read.readProductos();
-            //for(Producto producto: productos){
-            //Prueba prueba = new Prueba();
-            //prueba.productos();
-                
-        %>
+     
     <main class="section contenedor">
         <h2 class= "fw-300 centrar-texto">Productos en venta</h2>
-
+        <%
+            String prod_Id = "", prod_Nombre = "", prod_Costo = "", prod_Existencia = "";
+            List<Producto> productos = new ArrayList<Producto>();
+            Producto producto = null;
+            try {
+                String traerDatos = "SELECT * FROM PUBLIC.";
+                GlobalVariables globalvariables = new GlobalVariables();
+                Connection miConexion = DriverManager.getConnection(globalvariables.db,globalvariables.user, globalvariables.password);
+                Statement st = miConexion.createStatement();
+                traerDatos = traerDatos + "\"Productos\";";
+                ResultSet result = st.executeQuery(traerDatos);
+                while(result.next()){
+                    prod_Id = result.getString("Prod_Id");
+                    prod_Nombre = result.getString("Prod_Nombre");
+                    prod_Costo = result.getString("Prod_Costo");
+                    prod_Existencia = result.getString("Prod_Existencia");
+                    //--------------------------------------------------------------
+                    producto = new Producto(Integer.parseInt(prod_Id), prod_Nombre, Double.parseDouble(prod_Costo));
+                    producto.setCantidad(Integer.parseInt(prod_Existencia));
+                    //--------------------------------------------------------------
+                    productos.add(producto);
+                }
+                result.close();
+                st.close();
+                JOptionPane.showMessageDialog(null, "Conexión correcta");
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+            
+          for(Producto p: productos){
+        %>
         <div class="contenedor-anuncios">
             <div class = "anuncio">
                 <img src="img/anuncio1.jpg" alt="Anuncio en casa del lago">
@@ -217,12 +247,12 @@
                 </div><!-- Contenido anuncio -->
             </div><!-- Anuncio -->
         </div>
-        
-    </main>
-        <%    
-           //}//cierre del for productos
+         <%    
+           }//cierre del for productos
             
-        %>    
+        %>  
+    </main>
+          
         <%-- pie de pagina--%> 
         <footer>
             <div class="main_content">
