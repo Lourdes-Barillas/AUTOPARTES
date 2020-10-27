@@ -4,6 +4,11 @@
     Author 
 : deleo
 --%>
+<%@page import="java.awt.Image"%>
+<%@page import="javax.imageio.ImageIO"%>
+<%@page import="java.awt.image.BufferedImage"%>
+<%@page import="java.io.InputStream"%>
+<%@page import="javax.swing.ImageIcon"%>
 <%@page import="javax.swing.JOptionPane"%>
 <%@page import="java.util.List"%>
 <%@page import="java.sql.ResultSet"%>
@@ -44,15 +49,22 @@
      
     <main class="section contenedor">
         <h2 class= "fw-300 centrar-texto">Productos en venta</h2>
+        <div class="contenedor-anuncios">
         <%
             String prod_Id = "", prod_Nombre = "", prod_Costo = "", prod_Existencia = "";
-            List<Producto> productos = new ArrayList<Producto>();
             Producto producto = null;
             try {
                 String traerDatos = "SELECT * FROM PUBLIC.";
                 GlobalVariables globalvariables = new GlobalVariables();
-                Connection miConexion = DriverManager.getConnection(globalvariables.db,globalvariables.user, globalvariables.password);
-                Statement st = miConexion.createStatement();
+                //JOptionPane.showMessageDialog(null, "Conexión correcta");
+                Connection miConexion = null;
+                Statement st = null;
+                
+                Class.forName("org.postgresql.Driver");
+                //JOptionPane.showMessageDialog(null, "Conexión correcta");
+                miConexion = DriverManager.getConnection(globalvariables.db,globalvariables.user, globalvariables.password);
+                
+                st = miConexion.createStatement();
                 traerDatos = traerDatos + "\"Productos\";";
                 ResultSet result = st.executeQuery(traerDatos);
                 while(result.next()){
@@ -64,193 +76,61 @@
                     producto = new Producto(Integer.parseInt(prod_Id), prod_Nombre, Double.parseDouble(prod_Costo));
                     producto.setCantidad(Integer.parseInt(prod_Existencia));
                     //--------------------------------------------------------------
-                    productos.add(producto);
+                    //productos.add(producto);
+                    ImageIcon image = null;
+                    InputStream input;
+                    Image img = null;
+                    try {
+                            input = result.getBinaryStream(5);
+                            BufferedImage bi = ImageIO.read(input);
+                            image = new ImageIcon(bi);
+                            img = image.getImage();
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                    
+        %>
+        
+        
+            <div class = "anuncio">
+                <img src="IMAGES/Llanta.jpg" alt="Anuncio en casa del lago">
+                <div class="contenido-anuncio">
+                    <h3><%=producto.getProducto() %></h3>
+                    <p>producto de calidad
+                    </p>
+                    <p class="precio"><%=producto.getPrecio()+"" %></p>
+
+                    <ul class = "iconos-características">
+                        <li>
+                            <img src="img/icono_wc.svg" alt="icono wc">
+                            <p>3</p>
+                        </li>
+                        <li>
+                            <img src="img/icono_estacionamiento.svg" alt="icono autos">
+                            <p>3</p>
+                        </li>
+                        <li>
+                            <img src="img/icono_dormitorio.svg" alt="icono habitación">
+                            <p>4</p>
+                        </li>
+                    </ul>
+
+
+                    <a href="anuncio.html" class="boton boton-amarillo d-block">Ver propiedad</a>
+                </div><!-- Contenido anuncio -->
+            </div><!-- Anuncio -->
+
+         <%  
                 }
                 result.close();
                 st.close();
-                JOptionPane.showMessageDialog(null, "Conexión correcta");
+                //JOptionPane.showMessageDialog(null, "Conexión correcta");
             } catch (Exception e) {
                 System.out.println(e);
             }
             
-          for(Producto p: productos){
-        %>
-        <div class="contenedor-anuncios">
-            <div class = "anuncio">
-                <img src="img/anuncio1.jpg" alt="Anuncio en casa del lago">
-                <div class="contenido-anuncio">
-                    <h3>producto</h3>
-                    <p>casa con alberca acabados de lujo a un 
-                        en la ciudad, excelente oportunidad
-                    </p>
-                    <p class="precio">$200000000</p>
-
-                    <ul class = "iconos-características">
-                        <li>
-                            <img src="img/icono_wc.svg" alt="icono wc">
-                            <p>3</p>
-                        </li>
-                        <li>
-                            <img src="img/icono_estacionamiento.svg" alt="icono autos">
-                            <p>3</p>
-                        </li>
-                        <li>
-                            <img src="img/icono_dormitorio.svg" alt="icono habitación">
-                            <p>4</p>
-                        </li>
-                    </ul>
-
-
-                    <a href="anuncio.html" class="boton boton-amarillo d-block">Ver propiedad</a>
-                </div><!-- Contenido anuncio -->
-            </div><!-- Anuncio -->
-
-            <div class = "anuncio">
-                <img src="img/anuncio2.jpg" alt="Anuncio en casa con alberca">
-                <div class="contenido-anuncio">
-                    <h3>Casa con alberca</h3>
-                    <p>casa con alberca y acabados de lujo en la ciudad, excelente oportunidad
-                    </p>
-                    <p class="precio">$300000000</p>
-                    <ul class = "iconos-características">
-                        <li>
-                            <img src="img/icono_wc.svg" alt="icono wc">
-                            <p>3</p>
-                        </li>
-                        <li>
-                            <img src="img/icono_estacionamiento.svg" alt="icono autos">
-                            <p>3</p>
-                        </li>
-                        <li>
-                            <img src="img/icono_dormitorio.svg" alt="icono habitación">
-                            <p>4</p>
-                        </li>
-                    </ul>
-
-                    <a href="anuncio.html" class="boton boton-amarillo d-block">Ver propiedad</a>
-                </div><!-- Contenido anuncio -->
-            </div><!-- Anuncio -->
-
-            <div class = "anuncio">
-                <img src="img/anuncio3.jpg" alt="Anuncio de casa de lujo">
-                <div class="contenido-anuncio">
-                    <h3>Casa de lujo en el lago</h3>
-                    <p>casa en el lago con excelente vista, acabados de lujo a un 
-                        excelente precio
-                    </p>
-                    <p class="precio">$300000000</p>
-
-                    <ul class = "iconos-características">
-                        <li>
-                            <img src="img/icono_wc.svg" alt="icono wc">
-                            <p>3</p>
-                        </li>
-                        <li>
-                            <img src="img/icono_estacionamiento.svg" alt="icono autos">
-                            <p>3</p>
-                        </li>
-                        <li>
-                            <img src="img/icono_dormitorio.svg" alt="icono habitación">
-                            <p>4</p>
-                        </li>
-                    </ul>
-
-                    <a href="anuncio.html" class="boton boton-amarillo d-block">Ver propiedad</a>
-                    <br>
-                </div><!-- Contenido anuncio -->
-            </div><!-- Anuncio -->
-
-
-            <div class = "anuncio">
-                <img src="img/anuncio4.jpg" alt="Anuncio de casa de lujo">
-                <div class="contenido-anuncio">
-                    <h3>Casa fuera de la ciudad</h3>
-                    <p>casa con alberca y acabados de lujo,
-                        excelente oportunidad
-                    </p>
-                    <p class="precio">$2,000,00000</p>
-
-                    <ul class = "iconos-características">
-                        <li>
-                            <img src="img/icono_wc.svg" alt="icono wc">
-                            <p>2</p>
-                        </li>
-                        <li>
-                            <img src="img/icono_estacionamiento.svg" alt="icono autos">
-                            <p>2</p>
-                        </li>
-                        <li>
-                            <img src="img/icono_dormitorio.svg" alt="icono habitación">
-                            <p>4</p>
-                        </li>
-                    </ul>
-
-                    <a href="anuncio.html" class="boton boton-amarillo d-block">Ver propiedad</a>
-                    <br>
-                </div><!-- Contenido anuncio -->
-            </div><!-- Anuncio -->
-
-            <div class = "anuncio">
-                <img src="img/anuncio5.jpg" alt="Anuncio de casa de lujo en el bosque">
-                <div class="contenido-anuncio">
-                    <h3>Casa frente al bosque</h3>
-                    <p>casa con alberca frente al bosque, excelente oportunidad
-                    </p>
-                    <p class="precio">$3,500,000</p>
-
-                    <ul class = "iconos-características">
-                        <li>
-                            <img src="img/icono_wc.svg" alt="icono wc">
-                            <p>2</p>
-                        </li>
-                        <li>
-                            <img src="img/icono_estacionamiento.svg" alt="icono autos">
-                            <p>5</p>
-                        </li>
-                        <li>
-                            <img src="img/icono_dormitorio.svg" alt="icono habitación">
-                            <p>7</p>
-                        </li>
-                    </ul>
-
-                    <a href="anuncio.html" class="boton boton-amarillo d-block">Ver propiedad</a>
-                    <br>
-                </div><!-- Contenido anuncio -->
-            </div><!-- Anuncio -->
-
-            <div class = "anuncio">
-                <img src="img/anuncio6.jpg" alt="Anuncio de con alberca">
-                <div class="contenido-anuncio">
-                    <h3>Casa de lujo en el lago</h3>
-                    <p>casa en el lago con excelente vista, acabados de lujo a un 
-                        excelente precio
-                    </p>
-                    <p class="precio">$300000000</p>
-
-                    <ul class = "iconos-características">
-                        <li>
-                            <img src="img/icono_wc.svg" alt="icono wc">
-                            <p>3</p>
-                        </li>
-                        <li>
-                            <img src="img/icono_estacionamiento.svg" alt="icono autos">
-                            <p>3</p>
-                        </li>
-                        <li>
-                            <img src="img/icono_dormitorio.svg" alt="icono habitación">
-                            <p>4</p>
-                        </li>
-                    </ul>
-
-                    <a href="anuncio.html" class="boton boton-amarillo d-block">Ver propiedad</a>
-                    <br>
-                </div><!-- Contenido anuncio -->
-            </div><!-- Anuncio -->
+        %> 
         </div>
-         <%    
-           }//cierre del for productos
-            
-        %>  
     </main>
           
         <%-- pie de pagina--%> 

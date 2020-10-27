@@ -57,24 +57,22 @@ public class Read {
             }
             result.close();
             st.close();
-            JOptionPane.showMessageDialog(null, "Conexión correcta");
         }catch(Exception e){
             System.out.println(e.getCause());
-            JOptionPane.showMessageDialog(null, "Error al conectar " + e);
         }
         return ordenes;
     }//fin getData
     
-    public List<Producto> readProductos(){
+    public ArrayList<Producto> readProductos(){
         //seteando datos
         
         String prod_Id = "", prod_Nombre = "", prod_Costo = "", prod_Existencia = "";
-        List<Producto> productos = new ArrayList<Producto>();
+        ArrayList<Producto> productos = new ArrayList<Producto>();
         Producto producto = null;
         try{
             Connection miConexion = DriverManager.getConnection(globalvariables.db,globalvariables.user, globalvariables.password);
-            JOptionPane.showMessageDialog(null, "Base obtenida");
-            //Class.forName("org.postgresql.Driver");
+            
+            Class.forName("org.postgresql.Driver");
             Statement st = miConexion.createStatement();
             traerDatos = traerDatos + "\"Productos\";";
             ResultSet result = st.executeQuery(traerDatos);
@@ -91,10 +89,8 @@ public class Read {
             }
             result.close();
             st.close();
-            JOptionPane.showMessageDialog(null, "Conexión correcta");
         }catch(Exception e){
             System.out.println(e.getCause());
-            JOptionPane.showMessageDialog(null, "Error al conectar " + e);
         }
         return productos;
     }//fin getData

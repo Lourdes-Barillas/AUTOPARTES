@@ -3,6 +3,10 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import javax.swing.JOptionPane;
+import java.util.List;
+import java.sql.ResultSet;
+import Globalpackage.GlobalVariables;
 import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.Connection;
@@ -55,6 +59,10 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -88,19 +96,39 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <h2 class= \"fw-300 centrar-texto\">Productos en venta</h2>\n");
       out.write("        ");
 
+            String prod_Id = "", prod_Nombre = "", prod_Costo = "", prod_Existencia = "";
+            List<Producto> productos = new ArrayList<Producto>();
+            Producto producto = null;
             try {
-                   Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Project3DB", "postgres", "JeSuisFort56");
-                   Statement st = con.createStatement();
-                   st.execute("SELECT * FROM PUBLIC.\"Productos\""); 
+                String traerDatos = "SELECT * FROM PUBLIC.";
+                GlobalVariables globalvariables = new GlobalVariables();
+                Connection miConexion = DriverManager.getConnection(globalvariables.db,globalvariables.user, globalvariables.password);
+                Statement st = miConexion.createStatement();
+                traerDatos = traerDatos + "\"Productos\";";
+                ResultSet result = st.executeQuery(traerDatos);
+                while(result.next()){
+                    prod_Id = result.getString("Prod_Id");
+                    prod_Nombre = result.getString("Prod_Nombre");
+                    prod_Costo = result.getString("Prod_Costo");
+                    prod_Existencia = result.getString("Prod_Existencia");
+                    //--------------------------------------------------------------
+                    producto = new Producto(Integer.parseInt(prod_Id), prod_Nombre, Double.parseDouble(prod_Costo));
+                    producto.setCantidad(Integer.parseInt(prod_Existencia));
+                    //--------------------------------------------------------------
+                    productos.add(producto);
+                }
+                result.close();
+                st.close();
+                JOptionPane.showMessageDialog(null, "Conexión correcta");
             } catch (Exception e) {
                 System.out.println(e);
             }
             
-            Read read = new Read();
-            read.readProductos();
-          
         
       out.write("\n");
+      out.write("        <h1>");
+      out.print(productos.get(1).toString());
+      out.write("</h1>\n");
       out.write("        <div class=\"contenedor-anuncios\">\n");
       out.write("            <div class = \"anuncio\">\n");
       out.write("                <img src=\"img/anuncio1.jpg\" alt=\"Anuncio en casa del lago\">\n");
@@ -273,14 +301,14 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div><!-- Contenido anuncio -->\n");
       out.write("            </div><!-- Anuncio -->\n");
       out.write("        </div>\n");
-      out.write("        \n");
-      out.write("    </main>\n");
-      out.write("        ");
+      out.write("         ");
     
-           //}//cierre del for productos
+              
             
         
-      out.write("    \n");
+      out.write("  \n");
+      out.write("    </main>\n");
+      out.write("          \n");
       out.write("        ");
       out.write(" \n");
       out.write("        <footer>\n");
