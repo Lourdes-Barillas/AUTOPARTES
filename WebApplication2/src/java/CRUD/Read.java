@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -63,16 +64,20 @@ public class Read {
         return ordenes;
     }//fin getData
     
-    public ArrayList<Producto> readProductos(){
+    public List<Producto> readProductos(){
         //seteando datos
+        
         String prod_Id = "", prod_Nombre = "", prod_Costo = "", prod_Existencia = "";
-        ArrayList<Producto> productos = new ArrayList<Producto>();
+        List<Producto> productos = new ArrayList<Producto>();
         Producto producto = null;
         try{
+            JOptionPane.showMessageDialog(null, "Entró al try");
             Connection miConexion = globalvariables.connection();
+            JOptionPane.showMessageDialog(null, "Base obtenida");
             //Class.forName("org.postgresql.Driver");
             Statement st = miConexion.createStatement();
             traerDatos = traerDatos + "\"Productos\";";
+            JOptionPane.showMessageDialog(null, traerDatos);
             ResultSet result = st.executeQuery(traerDatos);
             while(result.next()){
                 prod_Id = result.getString("Prod_Id");

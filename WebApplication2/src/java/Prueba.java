@@ -11,8 +11,10 @@ import MasterClases.Producto;
 import MasterClases.TipoUsuario;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -43,7 +45,11 @@ public class Prueba {
         Read read = new Read();
         System.out.println(read.readProductos());
     }
-    
+    public List<Producto> productos(){
+         Read read = new Read();
+        System.out.println(read.readProductos());
+        return read.readProductos();
+    }
     
     /**
      * Este procedimiento sirve de prueba para insertar los productos con 

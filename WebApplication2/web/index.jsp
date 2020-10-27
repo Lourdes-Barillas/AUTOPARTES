@@ -4,6 +4,9 @@
     Author 
 : deleo
 --%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="MasterClases.Producto"%>
+<%@page import="CRUD.Read"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,14 +33,23 @@
             </div>
         </header>
         <%--scroll productos --%>
+        
+        <%
+            //Read read = new Read();
+            //ArrayList<Producto> productos = read.readProductos();
+            //for(Producto producto: productos){
+            //Prueba prueba = new Prueba();
+            //prueba.productos();
+                
+        %>
     <main class="section contenedor">
-        <h2 class= "fw-300 centrar-texto">Casas y depas en venta</h2>
+        <h2 class= "fw-300 centrar-texto">Productos en venta</h2>
 
         <div class="contenedor-anuncios">
             <div class = "anuncio">
                 <img src="img/anuncio1.jpg" alt="Anuncio en casa del lago">
                 <div class="contenido-anuncio">
-                    <h3>Casa en el lago</h3>
+                    <h3>producto</h3>
                     <p>casa con alberca acabados de lujo a un 
                         en la ciudad, excelente oportunidad
                     </p>
@@ -207,10 +219,10 @@
         </div>
         
     </main>
+        <%    
+           //}//cierre del for productos
             
-            
-            
-            
+        %>    
         <%-- pie de pagina--%> 
         <footer>
             <div class="main_content">
