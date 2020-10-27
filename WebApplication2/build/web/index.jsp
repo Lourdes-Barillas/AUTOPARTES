@@ -30,37 +30,183 @@
             </div>
         </header>
         <%--scroll productos --%>
-            <%//codigo java
-                //Producto p = new Producto();
-                //array con los datos de producto
-                String linkImg="https://www.inglestotal.com/wp-content/uploads/2011/02/vocabulario-carro-ingles.jpg";
-                String producto="agua", marca="mojada";
-                //cilco for hasta la longitud del arreglo obtenido de la base de datos
-                for(int i=0;i<5;i++){%>
-                <TABLE border="1" id="tablaC" class="tablWrapper">
-                    <TR>
-                        <TD>
-                            <div class="divp">
-                                <img class="imP" src="<%=linkImg%>"/>
-                            </div>
-                        </TD> 
-                    </TR>
-                    <tr>    
-                        <TD>
-                            <div class="divs">
-                                <h1>  Producto#<%=i%></h1>
-                                <h2>  marca</h2><br>
-                                <label  for="lcan">cantidad:</label>
-                                <input type="text" id="cantidad" name="cantidad"/><br><br>
-                                <center><button type="submit" id="ButtonCompra">Comprar</button></center>
-                            </div>   
-                        </TD>
-                    </tr>
-                </TABLE>
-                <br>
-            <%}%>
+    <main class="section contenedor">
+        <h2 class= "fw-300 centrar-texto">Casas y depas en venta</h2>
 
-            <br><br><br><br><br><br><br><br>
+        <div class="contenedor-anuncios">
+            <div class = "anuncio">
+                <img src="img/anuncio1.jpg" alt="Anuncio en casa del lago">
+                <div class="contenido-anuncio">
+                    <h3>Casa en el lago</h3>
+                    <p>casa con alberca acabados de lujo a un 
+                        en la ciudad, excelente oportunidad
+                    </p>
+                    <p class="precio">$200000000</p>
+
+                    <ul class = "iconos-características">
+                        <li>
+                            <img src="img/icono_wc.svg" alt="icono wc">
+                            <p>3</p>
+                        </li>
+                        <li>
+                            <img src="img/icono_estacionamiento.svg" alt="icono autos">
+                            <p>3</p>
+                        </li>
+                        <li>
+                            <img src="img/icono_dormitorio.svg" alt="icono habitación">
+                            <p>4</p>
+                        </li>
+                    </ul>
+
+
+                    <a href="anuncio.html" class="boton boton-amarillo d-block">Ver propiedad</a>
+                </div><!-- Contenido anuncio -->
+            </div><!-- Anuncio -->
+
+            <div class = "anuncio">
+                <img src="img/anuncio2.jpg" alt="Anuncio en casa con alberca">
+                <div class="contenido-anuncio">
+                    <h3>Casa con alberca</h3>
+                    <p>casa con alberca y acabados de lujo en la ciudad, excelente oportunidad
+                    </p>
+                    <p class="precio">$300000000</p>
+                    <ul class = "iconos-características">
+                        <li>
+                            <img src="img/icono_wc.svg" alt="icono wc">
+                            <p>3</p>
+                        </li>
+                        <li>
+                            <img src="img/icono_estacionamiento.svg" alt="icono autos">
+                            <p>3</p>
+                        </li>
+                        <li>
+                            <img src="img/icono_dormitorio.svg" alt="icono habitación">
+                            <p>4</p>
+                        </li>
+                    </ul>
+
+                    <a href="anuncio.html" class="boton boton-amarillo d-block">Ver propiedad</a>
+                </div><!-- Contenido anuncio -->
+            </div><!-- Anuncio -->
+
+            <div class = "anuncio">
+                <img src="img/anuncio3.jpg" alt="Anuncio de casa de lujo">
+                <div class="contenido-anuncio">
+                    <h3>Casa de lujo en el lago</h3>
+                    <p>casa en el lago con excelente vista, acabados de lujo a un 
+                        excelente precio
+                    </p>
+                    <p class="precio">$300000000</p>
+
+                    <ul class = "iconos-características">
+                        <li>
+                            <img src="img/icono_wc.svg" alt="icono wc">
+                            <p>3</p>
+                        </li>
+                        <li>
+                            <img src="img/icono_estacionamiento.svg" alt="icono autos">
+                            <p>3</p>
+                        </li>
+                        <li>
+                            <img src="img/icono_dormitorio.svg" alt="icono habitación">
+                            <p>4</p>
+                        </li>
+                    </ul>
+
+                    <a href="anuncio.html" class="boton boton-amarillo d-block">Ver propiedad</a>
+                    <br>
+                </div><!-- Contenido anuncio -->
+            </div><!-- Anuncio -->
+
+
+            <div class = "anuncio">
+                <img src="img/anuncio4.jpg" alt="Anuncio de casa de lujo">
+                <div class="contenido-anuncio">
+                    <h3>Casa fuera de la ciudad</h3>
+                    <p>casa con alberca y acabados de lujo,
+                        excelente oportunidad
+                    </p>
+                    <p class="precio">$2,000,00000</p>
+
+                    <ul class = "iconos-características">
+                        <li>
+                            <img src="img/icono_wc.svg" alt="icono wc">
+                            <p>2</p>
+                        </li>
+                        <li>
+                            <img src="img/icono_estacionamiento.svg" alt="icono autos">
+                            <p>2</p>
+                        </li>
+                        <li>
+                            <img src="img/icono_dormitorio.svg" alt="icono habitación">
+                            <p>4</p>
+                        </li>
+                    </ul>
+
+                    <a href="anuncio.html" class="boton boton-amarillo d-block">Ver propiedad</a>
+                    <br>
+                </div><!-- Contenido anuncio -->
+            </div><!-- Anuncio -->
+
+            <div class = "anuncio">
+                <img src="img/anuncio5.jpg" alt="Anuncio de casa de lujo en el bosque">
+                <div class="contenido-anuncio">
+                    <h3>Casa frente al bosque</h3>
+                    <p>casa con alberca frente al bosque, excelente oportunidad
+                    </p>
+                    <p class="precio">$3,500,000</p>
+
+                    <ul class = "iconos-características">
+                        <li>
+                            <img src="img/icono_wc.svg" alt="icono wc">
+                            <p>2</p>
+                        </li>
+                        <li>
+                            <img src="img/icono_estacionamiento.svg" alt="icono autos">
+                            <p>5</p>
+                        </li>
+                        <li>
+                            <img src="img/icono_dormitorio.svg" alt="icono habitación">
+                            <p>7</p>
+                        </li>
+                    </ul>
+
+                    <a href="anuncio.html" class="boton boton-amarillo d-block">Ver propiedad</a>
+                    <br>
+                </div><!-- Contenido anuncio -->
+            </div><!-- Anuncio -->
+
+            <div class = "anuncio">
+                <img src="img/anuncio6.jpg" alt="Anuncio de con alberca">
+                <div class="contenido-anuncio">
+                    <h3>Casa de lujo en el lago</h3>
+                    <p>casa en el lago con excelente vista, acabados de lujo a un 
+                        excelente precio
+                    </p>
+                    <p class="precio">$300000000</p>
+
+                    <ul class = "iconos-características">
+                        <li>
+                            <img src="img/icono_wc.svg" alt="icono wc">
+                            <p>3</p>
+                        </li>
+                        <li>
+                            <img src="img/icono_estacionamiento.svg" alt="icono autos">
+                            <p>3</p>
+                        </li>
+                        <li>
+                            <img src="img/icono_dormitorio.svg" alt="icono habitación">
+                            <p>4</p>
+                        </li>
+                    </ul>
+
+                    <a href="anuncio.html" class="boton boton-amarillo d-block">Ver propiedad</a>
+                    <br>
+                </div><!-- Contenido anuncio -->
+            </div><!-- Anuncio -->
+        </div>
+        
+    </main>
             
             
             

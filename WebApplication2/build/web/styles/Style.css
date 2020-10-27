@@ -134,3 +134,75 @@ header nav a:hover{
     width: 350px;
     background-color: #ffffff;
 }
+
+/**Globales*/
+.contenedor{
+   max-width: 80rem; 
+   margin: 0 auto 0 auto;
+   padding-left: 1rem;
+   padding-right: 1rem;
+}
+
+/**utiliddes*/
+.section{
+    margin-top: 2rem;
+    margin-bottom:2rem;
+}
+.d-block{
+    display: block!important;
+}
+.contenido-centrado{
+    max-width: 800px;
+}
+/**Anuncios*/
+.contenedor-anuncios{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.anuncio{
+    flex: 0 0 calc(33.3% - 1rem);
+    border-style: solid;
+    border-color: #808080;
+    border-width: 1px;
+    border: 1px solid #808080;
+    background-color: #f5f5f5;
+    margin-bottom: 1.8rem;
+}
+.contenido-anuncio{
+    padding: 2rem;
+}
+
+.contenido-anuncio h3,
+.contenido-anuncio p {
+    margin: 0;
+}
+
+
+.precio{
+    color: rgb(1, 128, 0);
+    font-weight: 600;
+    padding-top: 0.6rem;
+    padding-bottom: 1rem;
+}
+
+.iconos-características{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1;
+    max-width: 300px;
+}
+.iconos-características li{
+    display: flex;
+}
+.iconos-características li img{
+    margin-right: 0.5rem;
+    
+}
+.ver-todas{
+    display: flex;
+    justify-content: flex-end;
+}
+
