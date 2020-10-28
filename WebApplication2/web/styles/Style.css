@@ -142,8 +142,18 @@ header nav a:hover{
    padding-left: 1rem;
    padding-right: 1rem;
 }
-
-/**utiliddes*/
+.texto-centrado{
+    padding: 5rem 10rem 0rem 10rem;
+    text-align: center;
+}
+.texto-alineado{
+    text-align: justify;
+}
+/*botones*/
+.form{
+    align-items: center;
+}
+/*utiliddes*/
 .section{
     margin-top: 2rem;
     margin-bottom:2rem;
@@ -153,6 +163,10 @@ header nav a:hover{
 }
 .contenido-centrado{
     max-width: 800px;
+}
+.listado{
+   padding-left: 10rem;
+   padding-right: 6rem;
 }
 /**Anuncios*/
 .contenedor-anuncios{
@@ -206,3 +220,20 @@ header nav a:hover{
     justify-content: flex-end;
 }
 
+/**Ordenes*/
+.orden{
+    padding: 1rem 0 1rem 0;
+    margin: 1rem;
+}
+
+/*Formularios*/
+.form-alineado{
+    margin: 0rem 20rem;
+    align: right;
+    justify-content: space-between;
+    flex-template-columns: repeat(2, 50%);
+}
+
+.espaciado-input{
+    margin-left: 3rem;
+}

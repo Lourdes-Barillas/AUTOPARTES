@@ -40,7 +40,7 @@
                 <nav>
                     
                     <a href="#">Carrito</a>
-                    <a href="#">Ordenes</a>
+                    <a href="inicioSesion.jsp">Ordenes</a>
                 </nav>
             </div>
         </header>
@@ -121,7 +121,7 @@
             </div><!-- Anuncio -->
 
          <%  
-                }
+                }//while
                 result.close();
                 st.close();
                 //JOptionPane.showMessageDialog(null, "Conexión correcta");
