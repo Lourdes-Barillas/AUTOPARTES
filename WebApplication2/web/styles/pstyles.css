@@ -1,0 +1,43 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 27/10/2020, 11:39:06 PM
+    Author     : deleo
+*/
+
+/*add Producto*/
+body{
+    font-family: Arial;
+    background-color:#CCEEFF;
+    box-sizing: border-box;
+
+}
+form{
+    padding: 12px;
+    margin: 0 auto;
+    width: 300px;
+     background-color: white;
+     border-radius: 4px;
+}
+.field{
+    border: solid 1px #ccc;
+    width: 270px;
+    height: 25px;
+    
+}
+.field:focus{
+    border-color:#009933; 
+}
+.center-content{
+    
+}
+.brd{
+    border: 0;
+    outline: none;
+    background-color: #009933;
+    height: 35px;
+    width: 110px;
+}
