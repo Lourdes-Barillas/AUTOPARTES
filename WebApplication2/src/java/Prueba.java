@@ -9,6 +9,9 @@ import MasterClases.Cliente;
 import MasterClases.Orden;
 import MasterClases.Producto;
 import MasterClases.TipoUsuario;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -72,7 +75,7 @@ public class Prueba {
     public void insertCliente(int idUsuario, TipoUsuario tipocliente){
         Cliente cliente = new Cliente(idUsuario, tipocliente);
         Create create = new Create();
-        create.insertCliente(cliente);
+//        create.insertCliente(cliente);
     }
     
     public void insertUsuario(String nombre){
@@ -86,10 +89,28 @@ public class Prueba {
         create.insertClienteIndividual(cliente);
     }
     
-    public void insertClienteEmpresarial(String contacto, int idCliente){
-        Empresarial cliente = new Empresarial(contacto, idCliente);
-        Create create = new Create();
-        create.insertClienteEmpresarial(cliente);
+    public void insertClienteEmpresarial(String idusuario){
+        GlobalVariables globalvariables = new GlobalVariables();
+        try {
+            Empresarial cliente = null;
+            Create create = new Create();
+            Connection miConexion = globalvariables.connection();
+            Class.forName("org.postgresql.Driver");
+            Statement st = miConexion.createStatement();
+            String traerDatos = "SELECT * FROM PUBLIC.\"Clientes\";";
+            ResultSet result = st.executeQuery(traerDatos);
+            int i=0;
+            while(result.next()){
+                i++;
+                if( (result.getString("Cliente_UsuarioId")).equalsIgnoreCase(idusuario)){
+                    //cliente = new Empresarial(Integer.parseInt(idusuario), TipoUsuario.Cliente_Empresarial);
+                    //create.insertCliente(cliente);
+
+                }//fin if
+            }//fin while
+        } catch (Exception e) {
+        }
+
     }
     
     public void insertOrden(){

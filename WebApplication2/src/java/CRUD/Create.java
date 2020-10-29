@@ -51,6 +51,8 @@ public class Create {
             miStatement.setInt(3, cantidad);
             //Si fue insertado, busquemos el uno
             insertado = miStatement.executeUpdate();
+            miStatement.close();
+            miConexion.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -62,21 +64,25 @@ public class Create {
      * @param cliente
      * RECORDAR QUE INSERTA SÓLO "Prod_Nombre y Prod_Costo", YA QUE Prod_Id ES AUTOINCREMENT
      */
-    public void insertCliente(Cliente cliente) {
+    public void insertCliente(Cliente cliente, String contacto, String dpi) {
         //Insertamos el cliente
+        values = (" VALUES(?,?,?,?)");
         String consulta = insert 
-                + "public.\"Clientes\" (\"Cliente_UsuarioId\", \"Cliente_TipoCliente\")" 
+                + "public.\"Clientes\" (\"Cliente_UsuarioId\", \"Cliente_TipoCliente\", \"Cliente_Contacto\", \"Cliente_DPI\")" 
                 + values;
         //la consulta será INSERT INTO PRODUCTOS VALUES('PROD_NOMBRE', 'PROD_PRECIO');
         try {
             //1. Crear la conexión
             Connection miConexion = globalvariables.connection();
-            
+            Class.forName("org.postgresql.Driver");
             PreparedStatement miStatement = miConexion.prepareStatement(consulta);
             miStatement.setInt(1, cliente.getIdDeUsuario());
             miStatement.setString(2, cliente.getTipoCliente().toString());
+            miStatement.setString(3, contacto);
+            miStatement.setString(4, dpi);
             //Si fue insertado, busquemos el uno
             insertado = miStatement.executeUpdate();
+            miConexion.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -100,6 +106,8 @@ public class Create {
             miStatement.setInt(2, cliente.getIdCliente());
             //Si fue insertado, busquemos el uno
             insertado = miStatement.executeUpdate();
+            miStatement.close();
+            miConexion.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -113,7 +121,7 @@ public class Create {
     public void insertClienteEmpresarial(Empresarial cliente) {
         //Insertamos el cliente
         String consulta = insert 
-                + "public.\"ClientesEmpresariales\" (\"CE_Contacto\", \"CE_ClienteId\")" 
+                + " public.\"ClientesEmpresariales\" (\"CE_Contacto\", \"CE_ClienteId\")" 
                 + values;
         //la consulta será INSERT INTO PRODUCTOS VALUES('PROD_NOMBRE', 'PROD_PRECIO');
         try {
@@ -125,6 +133,7 @@ public class Create {
             miStatement.setInt(2, cliente.getIdCliente());
             //Si fue insertado, busquemos el uno
             insertado = miStatement.executeUpdate();
+            miStatement.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

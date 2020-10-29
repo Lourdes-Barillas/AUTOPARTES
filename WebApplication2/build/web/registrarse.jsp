@@ -55,12 +55,18 @@
                       Empresa
                     </label>
                   </div>
+                    <h6>Si eres una empresa, escribe tu e-mail para contactarnos, sino escribe tu DPI</h6>
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Dpi o Contacto</label>
+                    <input type="text" class="form-control" name="textContD" id="inputEmail4">
+                  </div>
                 </div>
                 <%--Checkboxes--%>
                 <%
+                int idcliente =0;
+                Create create = new Create();
                 try{
                     String usuario = null, contrasenia = null;
-                    Create create = new Create();
                     Cliente cliente;
                     if(request.getParameter("checkboxAdmin")!=null){
                         usuario = request.getParameter("textUsuario");
@@ -71,6 +77,7 @@
                         <%
                     }//if checkboxadmin
                         if(request.getParameter("checkboxPersona")!=null){
+                            String idusuario = null;
                             usuario = request.getParameter("textUsuario");
                             contrasenia = request.getParameter("textContrasenia");
                             create.insertUsuario(usuario, contrasenia);
@@ -81,38 +88,19 @@
                             Class.forName("org.postgresql.Driver");
 
                             Statement st = miConexion.createStatement();
-                            String traerDatos = "SELECT * FROM PUBLIC.\"Usuarios\";";
+                            String traerDatos = "SELECT * FROM PUBLIC.\"Usuarios\";", contacto=null;
                             ResultSet result = st.executeQuery(traerDatos);
+                            int i = 0;
                             while(result.next()){
-                                id = result.getString("Usuario_Id");
+                                i++;
                                 if( (result.getString("Usuario_Nombre")).equalsIgnoreCase(usuario)){
-                                    cliente = new Cliente(Integer.parseInt(id), TipoUsuario.Cliente_Individual);
-                                    create.insertCliente(cliente);
-                            %>
-                            <h3>obtenido el checkbox <%=id %> </h3>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="inputEmail4">DPI</label>
-                                  <input type="text" class="form-control" name="txtdpi" id="inputEmail4">
-                                </div>
-                              </div>
-                            </div>
-                            <%
-                                traerDatos = "SELECT * FROM PUBLIC.\"Clientes\";";
-                                result = st.executeQuery(traerDatos);
-                                Individual clientein;
-                                while(result.next()){
-                                    id = result.getString("Cliente_Id");
-                                    if( (result.getString("Cliente_Nombre")).equalsIgnoreCase(usuario)){
-                                        clientein = new Individual(request.getParameter("txtdpi"), Integer.parseInt(id));
-                                        create.insertClienteIndividual(clientein);
-                                    }
-                                }
+                                    idusuario = result.getString("Usuario_Id");
+                                    cliente = new Cliente(Integer.parseInt(idusuario), TipoUsuario.Cliente_Individual);
+                                    create.insertCliente(cliente, null, request.getParameter("textContD"));
                                 }//fin if
-                                
                             }//fin while
-                        }//fin if
-
+                    }//fin if
+                    String idusuario = null;
                     if(request.getParameter("checkboxEmpresa")!=null){
                             usuario = request.getParameter("textUsuario");
                             contrasenia = request.getParameter("textContrasenia");
@@ -124,46 +112,27 @@
                             Class.forName("org.postgresql.Driver");
 
                             Statement st = miConexion.createStatement();
-                            String traerDatos = "SELECT * FROM PUBLIC.\"Usuarios\";";
+                            String traerDatos = "SELECT * FROM PUBLIC.\"Usuarios\";", contacto=null;
                             ResultSet result = st.executeQuery(traerDatos);
+                            int i = 0;
                             while(result.next()){
-                                id = result.getString("Usuario_Id");
+                                i++;
                                 if( (result.getString("Usuario_Nombre")).equalsIgnoreCase(usuario)){
-                                    cliente = new Cliente(Integer.parseInt(id), TipoUsuario.Cliente_Empresarial);
-                                    create.insertCliente(cliente);
-                            %>
-                            <h3>obtenido el checkbox <%=id %> </h3>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                  <label for="inputEmail4">E-mail</label>
-                                  <input type="email" class="form-control" name="txtContacto" id="inputEmail4">
-                                </div>
-                              </div>
-                            </div>
-                            <%
-                                traerDatos = "SELECT * FROM PUBLIC.\"Clientes\";";
-                                result = st.executeQuery(traerDatos);
-                                Empresarial clienteEm;
-                                while(result.next()){
-                                    id = result.getString("Cliente_Id");
-                                    if( (result.getString("Cliente_Nombre")).equalsIgnoreCase(usuario)){
-                                        clienteEm = new Empresarial(request.getParameter("txtContacto"), Integer.parseInt(id));
-                                        create.insertClienteEmpresarial(clienteEm);
-                                        %>
-                                            <h3>obtenido el usuario<%=usuario %> </h3>
-                                        <%
-                                    }
-                                }
+                                    idusuario = result.getString("Usuario_Id");
+                                    cliente = new Cliente(Integer.parseInt(idusuario), TipoUsuario.Cliente_Empresarial);
+                                    create.insertCliente(cliente, request.getParameter("textContD"), null);
                                 }//fin if
-                                
                             }//fin while
-                        }//fin if
+                    }//fin if
                 }//fintry
                 catch(Exception e){
 
                 }//fin catch
                 %>
                 <button type="submit" class="btn btn-primary">Siguiente...</button>
+                <%
+                    
+                %>
               </form>
         </main>
     </body>

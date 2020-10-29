@@ -50,6 +50,7 @@
         
      
     <main class="section contenedor">
+        <a href="AgregarProducto.jsp" class="boton boton-amarillo d-block">Agregar un producto</a>
         <h2 class= "fw-300 centrar-texto">Productos en venta</h2>
         <div class="contenedor-anuncios">
         <%
@@ -95,30 +96,14 @@
         
         
             <div class = "anuncio">
-                <img src="IMAGES/Llanta.jpg" alt="Anuncio en casa del lago">
+                <img src="IMAGES/Llanta.jpg" alt="Anuncio de producto">
                 <div class="contenido-anuncio">
                     <h3><%=producto.getProducto() %></h3>
                     <p>producto de calidad
                     </p>
                     <p class="precio"><%=producto.getPrecio()+"" %></p>
 
-                    <ul class = "iconos-características">
-                        <li>
-                            <img src="img/icono_wc.svg" alt="icono wc">
-                            <p>3</p>
-                        </li>
-                        <li>
-                            <img src="img/icono_estacionamiento.svg" alt="icono autos">
-                            <p>3</p>
-                        </li>
-                        <li>
-                            <img src="img/icono_dormitorio.svg" alt="icono habitación">
-                            <p>4</p>
-                        </li>
-                    </ul>
-
-
-                    <a href="anuncio.html" class="boton boton-amarillo d-block">Ver propiedad</a>
+                    <a href="#" class="boton boton-amarillo d-block">Ver producto</a>
                 </div><!-- Contenido anuncio -->
             </div><!-- Anuncio -->
 
