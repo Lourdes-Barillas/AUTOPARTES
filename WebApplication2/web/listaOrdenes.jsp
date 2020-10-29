@@ -15,6 +15,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="styles/app.css">
         <link rel="stylesheet" type="text/css" href="styles/Style.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         
@@ -76,5 +77,16 @@
             %>
           </ul>
         </main>
+          
+        <footer class="site-footer seccion">
+            <div class="contenedor contenedor-footer">
+                <nav class="navegacion">
+                    <a href="anuncios.html">Anuncios</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contacto.html">Contacto</a>
+                </nav>
+                <p class="copyright">Todos los derechos reservados 2019 &copy;</p>
+            </div>
+        </footer>
     </body>
 </html>

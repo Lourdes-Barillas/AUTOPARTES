@@ -44,7 +44,7 @@ public class Create {
         try {
             //1. Crear la conexión
             Connection miConexion = globalvariables.connection();
-            
+            Class.forName("org.postgresql.Driver");
             PreparedStatement miStatement = miConexion.prepareStatement(consulta);
             miStatement.setString(1, producto.getProducto());
             miStatement.setDouble(2, producto.getPrecio());
@@ -53,7 +53,6 @@ public class Create {
             insertado = miStatement.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null, "Error al insertar " + e);
         }
     }//fin insertproducto
     
@@ -80,7 +79,6 @@ public class Create {
             insertado = miStatement.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null, "Error al insertar " + e);
         }
     }//fin insertcliente
     /**
@@ -96,7 +94,7 @@ public class Create {
         try {
             //1. Crear la conexión
             Connection miConexion = globalvariables.connection();
-            
+            Class.forName("org.postgresql.Driver");
             PreparedStatement miStatement = miConexion.prepareStatement(consulta);
             miStatement.setString(1, cliente.getDpi());
             miStatement.setInt(2, cliente.getIdCliente());
@@ -104,7 +102,6 @@ public class Create {
             insertado = miStatement.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null, "Error al insertar " + e);
         }
     }//fin insertclienteindividual
     
@@ -122,7 +119,7 @@ public class Create {
         try {
             //1. Crear la conexión
             Connection miConexion = globalvariables.connection();
-            
+            Class.forName("org.postgresql.Driver");
             PreparedStatement miStatement = miConexion.prepareStatement(consulta);
             miStatement.setString(1, cliente.getContacto());
             miStatement.setInt(2, cliente.getIdCliente());
@@ -130,7 +127,6 @@ public class Create {
             insertado = miStatement.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null, "Error al insertar " + e);
         }
     }//fin insertclienteempresarial
     
@@ -139,24 +135,24 @@ public class Create {
      * Inserta un usuario antes de ingresar el cliente
      * @param nombre es el nombre de usuario
      */
-    public void insertUsuario(String nombre) {
-        values = " VALUES(?);";
+    public void insertUsuario(String nombre, String contrasenia) {
+        values = " VALUES(?,?);";
         //Insertamos el cliente
         String consulta = insert 
-                + "public.\"Usuarios\" (\"Usuario_Nombre\")" 
+                + "public.\"Usuarios\" (\"Usuario_Nombre\", \"Usuario_Contrasenia\")" 
                 + values;
         //la consulta será INSERT INTO PRODUCTOS VALUES('PROD_NOMBRE', 'PROD_PRECIO');
         try {
             //1. Crear la conexión
             Connection miConexion = globalvariables.connection();
-            
+            Class.forName("org.postgresql.Driver");
             PreparedStatement miStatement = miConexion.prepareStatement(consulta);
             miStatement.setString(1, nombre);
+            miStatement.setString(2, contrasenia);
             //Si fue insertado, busquemos el uno
             insertado = miStatement.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null, "Error al insertar " + e);
         }
     }//fin de insertusuario
     
@@ -174,7 +170,7 @@ public class Create {
         try {
             //1. Crear la conexión
             Connection miConexion = globalvariables.connection();
-            
+            Class.forName("org.postgresql.Driver");
             PreparedStatement miStatement = miConexion.prepareStatement(consulta);
             miStatement.setInt(1, item.getCantidad());
             miStatement.setInt(2, item.getProducto().getIdProducto());
@@ -184,7 +180,6 @@ public class Create {
             insertado = miStatement.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null, "Error al insertar " + e);
         }
     }
     
@@ -200,7 +195,7 @@ public class Create {
         try {
             //1. Crear la conexión
             Connection miConexion = globalvariables.connection();
-            
+            Class.forName("org.postgresql.Driver");
             Statement miStatement = miConexion.createStatement();
             values = " VALUES ("+orden.getIdCliente()+", ";//1
             values = values + "'"+orden.getTipoEnvio()+"',";//2
@@ -221,7 +216,6 @@ public class Create {
         } catch (Exception e) {
             //System.out.println(e.getMessage());
             Logger.getLogger(GlobalVariables.class.getName()).log(Level.SEVERE, null, e);
-            JOptionPane.showMessageDialog(null, "Error al insertar " + e);
         }
     }
 }

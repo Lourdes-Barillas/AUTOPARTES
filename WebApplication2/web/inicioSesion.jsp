@@ -4,6 +4,11 @@
     Author     : Adriana P
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="Globalpackage.GlobalVariables"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,53 +20,66 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1 class="texto-centrado">Iniciar sesión</h1>
-        <div class="orden contenedor listado">
-            
-            <form class="orden form-alineado" action="inicioSesion.jsp" >
-                <div class="form-group row">
-                  <label for="inputEmail3" class="col-sm-2 col-form-label texto-alineado">UserName</label>
-                  <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3">
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña</label>
-                  <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3">
-                  </div>
-                </div>
-                <fieldset class="form-group">
-                  <div class="row">
-                    <legend class="col-form-label col-sm-2 pt-0">Tipo de usuario</legend>
-                    <div class="col-sm-10">
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                        <label class="form-check-label" for="gridRadios1">
-                          Cliente Individual
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                        <label class="form-check-label" for="gridRadios2">
-                          Cliente Empresarial
-                        </label>
-                      </div>
-                      <div class="form-check disabled">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
-                        <label class="form-check-label" for="gridRadios3">
-                          Administrador
-                        </label>
+        
+        <div class="orden contenedor listado centrado" align="center">
+            <h1 class="texto-centrado">Iniciar sesión</h1>
+                <form class="orden form-alineado" action="listaOrdenes.jsp" >
+                    <div class="form-group row">
+                      <label for="inputEmail3" class="col-sm-2 col-form-label texto-alineado">Usuario</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="usuario" class="form-control" id="inputEmail3">
                       </div>
                     </div>
-                  </div>
-                </fieldset>
-                <div class="form-group row">
-                  <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
-                  </div>
-                </div>
-              </form>
+                    <div class="form-group row">
+                      <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña</label>
+                      <div class="col-sm-10">
+                        <input type="password" name="contrasenia" class="form-control" id="inputPassword3">
+                      </div>
+                    </div>
+                    <a href="registrarse.jsp">¿No tienes una cuenta?</a>
+                    <div class="form-group row boton-iniciar" align="center">
+                      <div class="col-sm-10" align="center">
+                        <button type="submit" name="enviar" class="btn btn-primary">Ingresar</button>
+                      </div>
+                    </div>
+                </form>
+            
           </div>
+        
+        <%
+            if(request.getParameter("enviar")!=null){
+                System.out.println("boton presionado");
+                String usuario = request.getParameter("usuario");
+                String contrasenia = request.getParameter("contrasenia");
+                String consulta = "SELECT * FROM PUBLIC.\"Usuarios\"";/* WHERE \"Usuario_Contrasenia\" = " + contrasenia +
+                                  " AND \"Usuario_Nombre\" = " + usuario + ";";*/
+                try {
+                    Connection con = null;
+                    Statement statement = null;
+                    Class.forName("org.postgresql.Driver");
+                    GlobalVariables globalv = new GlobalVariables();
+                    con = DriverManager.getConnection(globalv.db, globalv.user, globalv.password);
+                    statement = con.createStatement();
+                    ResultSet result = statement.executeQuery(consulta);
+                    while(result.next()){
+                        if(result.getString("Usuario_Nombre").equals(usuario) 
+                                && result.getString("Usuario_Contrasenia").equals(contrasenia)){
+                            %>
+                            <h5>usuario encontrado</h5>
+                            <%
+                        }else{
+                            %>
+                            <h5>usuario no encontrado</h5>
+                            <%
+}
+                    }
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+        %>
+        
     </body>
+    
+    
 </html>

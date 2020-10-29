@@ -10,6 +10,7 @@ package MasterClases;
  * @author Adriana P
  */
 public class Cliente {
+    
     protected TipoUsuario tipoCliente;
     protected int id;
     protected int idUsuario;
@@ -46,6 +47,7 @@ public class Cliente {
     public void setTipoUsuario(TipoUsuario tipoCliente) {
         this.tipoCliente = tipoCliente;
     }
+    
     
     @Override
     public String toString(){

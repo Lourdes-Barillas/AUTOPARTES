@@ -1,0 +1,394 @@
+/**Globales**/
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+*,*:before, *:after{
+    box-sizing: inherit;
+}
+.contenedor{
+   max-width: 80rem; 
+   margin: 0 auto 0 auto;
+   border: 100%;
+}
+
+h1{
+    font-size:3.8rem;
+}
+h2{
+    font-size:3.4rem;
+}
+h3{
+    font-size:3rem;
+}
+h4{
+    font-size:2.6rem;
+}
+body{
+    
+    font-family: 'Lato', sans-serif;
+    font-size: 1.6rem;
+}
+img{
+    max-width: 100%;
+}
+
+
+/**utiliddes*/
+.section{
+    margin-top: 2rem;
+    margin-bottom:2rem;
+}
+.d-block{
+    display: block!important;
+}
+.contenido-centrado{
+    max-width: 800px;
+}
+
+
+
+/**Botones*/
+.boton{
+    border: none;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    display: inline-block;
+    text-align: center;
+}
+.boton:hover{
+    cursor: pointer;
+}
+.boton-amarillo{
+    background-color:#f9ab00;
+}
+.boton-verde{
+    background-color:#34c606;
+}
+
+/* Header*/
+.site-header{
+    background-color: #333333;
+    padding: 1rem 0 3rem 0;
+}
+.site-header.inicio {
+    background: url(../img/header.jpg);
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+    min-height: 60rem;
+}
+
+.contenido-header{
+    height: 100%; /**para que tome toda la distancia del padre*/
+    display: flex; 
+    /** me ordenará a un defecto 
+    los contenidos de .barra(sin sus hijos, 
+    poque enla segunda clase no lo incluye)  y h1*/
+    flex-direction: column;/* el row es el defecto
+    row alinea hacia una fila, así respectivamente 
+    columna*/
+    justify-content: space-between; /*Están el start, el end, space y otros
+    Recuerda cómo lo quieres para que se alinea arriba, abajo o enmedio*/
+}
+
+.contenido-header h1 {
+    color: #ffffff;
+    /*padding es espacio hacia adentro
+      Margin es separación a otro elemento*/
+    padding-bottom: 2rem;
+    max-width: 60rem;/*Si crece la ventana, no quiero que tenga más de 600px*/
+    line-height: 1.5;/*interlineado*/
+}
+.barra{
+    display:  flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 3rem;
+}
+
+/**Navegación **/
+
+.navegacion a{
+    color:#ffffff;
+    text-decoration: none;
+    font-size: 1.8rem;
+    margin-right: 0.7rem;
+}
+.navegacion a:hover{
+    color: #718100;
+}
+.navegacion a:last-of-type{
+    margin: 0rem;
+}
+
+/**Iconos nostros*/
+.iconos-nosotros{
+    display: flex;/**/
+    justify-content: space-between;
+}
+.icono{
+    flex-basis: calc(33.3% - 1rem);
+    text-align: center;
+    line-height: 1.8;
+}
+.icono h3{
+    text-transform: uppercase;
+}
+
+.fw-300{
+    font-weight: 300;
+}
+.centrar-texto{
+    text-align: center;
+}
+
+
+/**Anuncios*/
+.contenedor-anuncios{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.anuncio{
+    flex: 0 0 calc(33.3% - 1rem);
+    border-style: solid;
+    border-color: #808080;
+    border-width: 1px;
+    border: 1px solid #808080;
+    background-color: #f5f5f5;
+    margin-bottom: 1.8rem;
+}
+.contenido-anuncio{
+    padding: 2rem;
+}
+
+.contenido-anuncio h3,
+.contenido-anuncio p {
+    margin: 0;
+}
+
+
+.precio{
+    color: rgb(1, 128, 0);
+    font-weight: 600;
+    padding-top: 0.6rem;
+    padding-bottom: 1rem;
+}
+
+.iconos-características{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1;
+    max-width: 300px;
+}
+.iconos-características li{
+    display: flex;
+}
+.iconos-características li img{
+    margin-right: 0.5rem;
+    
+}
+.ver-todas{
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+/**Contacto home*/
+.imagen-contacto{
+    background-image: url(../img/encuentra.jpg);
+    height: 40rem;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    align-items:center;
+}
+
+.contenido-contacto{
+    flex: 1;
+    color: #ffffff;
+}
+
+.contenido-contacto p {
+    font-size: 1.8rem;
+}
+
+
+/**Sección inferior*/
+.seccion-inferior{
+    display: flex;
+    justify-content: space-evenly;
+}
+.seccion-inferior .blog{
+    flex-basis: 60%;
+}
+
+.seccion-inferior .testimoniales{
+    flex-basis: calc(40% - 5rem);
+}
+
+
+
+.entrada-blog{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+.entrada-blog:last-of-type{
+    margin-bottom: 0;
+}
+.entrada-blog .imagen{
+    flex-basis: 40%;
+}
+
+.entrada-blog .texto-entrada{
+    flex-basis: calc(60% - 3rem);
+}
+
+.texto-entrada a{
+    color: #000000;
+    text-decoration: none;
+}
+
+.texto-entrada h4{
+    margin: 0;
+}
+.texto-entrada h4::after{
+    content: '';
+    display: block;
+    width: 20rem;
+    height: .5rem;
+    background-color: #71b100;
+}
+
+.texto-entrada span{
+    color: #e08709;
+}
+
+.testimonial{
+    background-color: #71b100;
+    font-size: 1.8rem;
+    color: #ffffff;
+    padding: 2rem;
+    border-radius: 5%;
+}
+.testimonial blockquote{
+    position: relative;
+    padding-left: 1rem;
+}
+.testimonial blockquote::before{
+    content: '';
+    background-image: url(../img/comilla.svg);
+    width: 4rem;
+    height: 4rem;
+    display: block;
+    position: absolute;
+    left:-4rem;
+    top: -2rem;
+}
+.testimonial p{
+    text-align: right;
+}
+
+/**Footer*/
+.site-footer{
+    background-color: #333333;
+    margin: 0;
+}
+
+.contenedor-footer{
+    padding: 3rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.copyright{
+    margin: 0;
+    color: #ffffff;
+}
+
+/**Internas**/
+
+/**Nosotros*/
+.contenido-nosotros{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 2rem;
+}
+.texto-nosotros blockquote{
+    font-weight: 900;
+    font-size: 2rem;
+    margin: 0;
+    padding: 3rem 0;
+}
+
+/**Anuncios*/
+.resumen-propiedad{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/**Contacto*/
+.contacto{
+    margin-bottom: 1rem;
+}
+.contacto fieldset{
+    margin-bottom: 1.5rem;
+}
+.contacto p{
+    font-size: 1.5rem;
+    color: #4f4f4f;
+    margin: 2.5rem 0 0.5rem 0;
+}
+legend{
+    font-size: 2.4rem;
+    color: #4e4b4b;
+}
+
+input:placeholder-shown{
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.5rem;
+    color: #0e1011;
+}
+
+label{
+    display: block;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+input:not([type="submit"]),
+textarea,
+select{
+    padding: 1rem;
+    display: block;
+    width: 100%;
+    background-color: #e1e1e1;
+    margin-bottom: 2rem;
+    border: none;
+    border-radius: 0.3rem;
+}
+input[type="radio"]{
+    width: auto;
+    margin: 0;
+}
+select{
+    -webkit-appearance: none;
+    appearance: none;
+}
+textarea{
+    height: 20rem;
+}
+.forma-contacto{
+    max-width: 30rem;
+    display: flex;
+    justify-content: space-between;
+}

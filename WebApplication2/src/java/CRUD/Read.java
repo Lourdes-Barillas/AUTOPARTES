@@ -32,7 +32,7 @@ public class Read {
         Orden orden = null;
         try{
             Connection miConexion = globalvariables.connection();
-            //Class.forName("org.postgresql.Driver");
+            Class.forName("org.postgresql.Driver");
             Statement st = miConexion.createStatement();
             traerDatos = traerDatos + "\"Orden\";";
             ResultSet result = st.executeQuery(traerDatos);

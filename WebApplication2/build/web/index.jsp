@@ -27,7 +27,9 @@
         <title>Auto Partes</title>
        
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link rel="stylesheet" type="text/css" href="styles/app.css">
         <link rel="stylesheet" type="text/css" href="styles/Style.css">
+        
     </head>
     <body>
         <%--header --%>  
@@ -134,39 +136,17 @@
     </main>
           
         <%-- pie de pagina--%> 
-        <footer>
-            <div class="main_content">
-                <div class="left box">
-                    <h2> about us</h2>
-                    <div class="content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec quam in nisl maximus ultrices. Ut congue pretium odio rutrum malesuada. Etiam nibh ipsum, condimentum et cursus ut, malesuada eget ligula. Nunc ut laoreet arcu, quis posuere erat. Phasellus commodo tincidunt velit non tempus.</p>
-                        
-                    </div>
-               </div> 
-                <div class="center box">
-                    <h2>Contact us</h2>
-                    <div class="phone">
-                        <span class="fas fa-phone-alt"></span>
-                        <span class="text">+502 5646 5653</span>
-                    </div>
-                        <div class="mail">
-                        <span class="fas fa-envelope"></span>
-                        <span class="text">sdeleonc7@miumg.edu.gt</span>
-                    </div>
-                    <div class="mail">
-                        <span class="fas fa-envelope"></span>
-                        <span class="text">sdeleonc7@miumg.edu.gt</span>
-                    </div>
-                    <div class="social">
-                            <a href="#"><span class="fab fa-facebook-f"></span></a>
-                            <a href="#"><span class="fab fa-twitter"></span></a>
-                            <a href="#"><span class="fab fa-instagram"></span></a>
-                            <a href="#"><span class="fab fa-youtube"></span></a>
-                        </div>
-                </div>
-                
+        <footer class="site-footer seccion">
+            <div class="contenedor contenedor-footer">
+                <nav class="navegacion">
+                    <a href="anuncios.html">Anuncios</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contacto.html">Contacto</a>
+                </nav>
+                <p class="copyright">Todos los derechos reservados 2019 &copy;</p>
             </div>
         </footer>
+    
         <%-- --%>
     </body>
 </html>

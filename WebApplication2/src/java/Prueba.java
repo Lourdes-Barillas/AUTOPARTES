@@ -77,7 +77,7 @@ public class Prueba {
     
     public void insertUsuario(String nombre){
         Create create = new Create();
-        create.insertUsuario(nombre);
+        //create.insertUsuario(nombre);
     }
     
     public void insertClienteInd(String dpi, int idCliente){
