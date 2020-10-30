@@ -43,7 +43,7 @@ public class Create {
         //la consulta será INSERT INTO PRODUCTOS VALUES('PROD_NOMBRE', 'PROD_PRECIO');
         try {
             //1. Crear la conexión
-            Connection miConexion = globalvariables.connection();
+            Connection miConexion = DriverManager.getConnection(globalvariables.db, globalvariables.user, globalvariables.password);
             Class.forName("org.postgresql.Driver");
             PreparedStatement miStatement = miConexion.prepareStatement(consulta);
             miStatement.setString(1, producto.getProducto());

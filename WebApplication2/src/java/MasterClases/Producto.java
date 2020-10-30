@@ -39,7 +39,10 @@ public class Producto {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-    
+
+    public int getCantidad() {
+        return cantidad;
+    }
     public int getIdProducto() {
         return idProducto;
     }

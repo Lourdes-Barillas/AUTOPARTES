@@ -10,5 +10,7 @@ package MasterClases;
  * @author Adriana P
  */
 public class Usuario {
+    private String nombre;
+    
     
 }

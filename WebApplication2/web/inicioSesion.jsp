@@ -23,7 +23,7 @@
         
         <div class="orden contenedor listado centrado" align="center">
             <h1 class="texto-centrado">Iniciar sesión</h1>
-                <form class="orden form-alineado" action="listaOrdenes.jsp" >
+                <form class="orden form-alineado" action="menuadmin.jsp" >
                     <div class="form-group row">
                       <label for="inputEmail3" class="col-sm-2 col-form-label texto-alineado">Usuario</label>
                       <div class="col-sm-10">

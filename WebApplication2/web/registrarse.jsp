@@ -28,7 +28,7 @@
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="inputEmail4">Usuario</label>
-                    <input type="text" class="form-control" name="textUsuario" id="inputEmail4">
+                    <input type="text" class="form-control" placeholder="Empieza con @" name="textUsuario" id="inputEmail4">
                   </div>
                   <div class="form-group col-md-6">
                     <label for="inputPassword4">Contraseña</label>
@@ -54,11 +54,9 @@
                     <label class="form-check-label" for="gridCheck">
                       Empresa
                     </label>
-                  </div>
-                    <h6>Si eres una empresa, escribe tu e-mail para contactarnos, sino escribe tu DPI</h6>
-                  <div class="form-group col-md-6">
+                  </div><div class="form-group col-md-6">
                     <label for="inputEmail4">Dpi o Contacto</label>
-                    <input type="text" class="form-control" name="textContD" id="inputEmail4">
+                    <input type="text" class="form-control" name="textContD" placeholder="Si eres una empresa, escribe tu e-mail, sino tu DPI" id="inputEmail4">
                   </div>
                 </div>
                 <%--Checkboxes--%>

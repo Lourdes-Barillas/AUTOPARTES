@@ -14,7 +14,7 @@ public class Cliente {
     protected TipoUsuario tipoCliente;
     protected int id;
     protected int idUsuario;
-
+    protected String clienteobtenido;
     public void setId(int id) {
         this.id = id;
     }
@@ -30,6 +30,11 @@ public class Cliente {
     public Cliente(){
         //Todos los parámetros
     }
+    
+    public Cliente(int idDeUsuario, String cliente){
+        this.clienteobtenido = cliente;
+        this.idUsuario = idDeUsuario;
+    }
 
     public String getNombreClase(){
         String clase = this.tipoCliente.toString();
@@ -43,6 +48,10 @@ public class Cliente {
         return this.idUsuario;
     }
     
+
+    public String getClienteobtenido() {
+        return clienteobtenido;
+    }
     
     public void setTipoUsuario(TipoUsuario tipoCliente) {
         this.tipoCliente = tipoCliente;
