@@ -4,6 +4,7 @@
     Author 
 : deleo
 --%>
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.awt.Image"%>
 <%@page import="javax.imageio.ImageIO"%>
 <%@page import="java.awt.image.BufferedImage"%>
@@ -42,7 +43,7 @@
             <div class="logo">AutoPartes</div> 
                 <nav>
                     
-                    <a href="#">Carrito</a>
+                    <a href="realizarCompra.jsp">Carrito</a>
                     <a href="inicioSesion.jsp">Ordenes</a>
                 </nav>
             </div>
@@ -55,7 +56,7 @@
         <h2 class= "fw-300 centrar-texto">Productos en venta</h2>
         <div class="contenedor-anuncios">
         <%
-            String prod_Id = "", prod_Nombre = "", prod_Costo = "", prod_Existencia = "";
+            String prod_Id = "", prod_Nombre = "", prod_Costo = "", prod_Existencia = "",name;
             Producto producto = null;
             try {
                 String traerDatos = "SELECT * FROM PUBLIC.";
@@ -63,7 +64,7 @@
                 //JOptionPane.showMessageDialog(null, "Conexión correcta");
                 Connection miConexion = null;
                 Statement st = null;
-                
+                PreparedStatement ps;
                 Class.forName("org.postgresql.Driver");
                 //JOptionPane.showMessageDialog(null, "Conexión correcta");
                 miConexion = DriverManager.getConnection(globalvariables.db,globalvariables.user, globalvariables.password);
@@ -97,19 +98,20 @@
                     
         %>
         
-        
+        <form action="addOrden.jsp">
             <div class = "anuncio"  align="center">
                 <img class="tamanioprod" src="IMAGES/productos/producto<%=+i%>.jpg" alt="Anuncio de producto">
                 <div class="contenido-anuncio">
                     <h3><%=producto.getProducto() %></h3>
-                    <p>producto de calidad
+                    <p>producto de calidad. 
+                        
                     </p>
-                    <p class="precio"><%=producto.getPrecio()+"" %></p>
-
-                    <a href="#" class="boton boton-amarillo d-block">Ver producto</a>
+                    <p class="precio">Q. <%=Double.parseDouble(prod_Costo) %></p>
+                    <%--<button class="boton boton-amarillo d-block" type="submit">agregar </button>  --%>
+                    <a href="addOrden.jsp?name=<%=result.getString("Prod_Nombre")%>" class="boton boton-amarillo d-block">Comprar</a>
                 </div><!-- Contenido anuncio -->
             </div><!-- Anuncio -->
-
+            </form>
          <%  
                 }//while
                 result.close();
