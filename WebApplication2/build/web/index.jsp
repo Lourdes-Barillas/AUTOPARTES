@@ -29,6 +29,7 @@
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <link rel="stylesheet" type="text/css" href="styles/app.css">
         <link rel="stylesheet" type="text/css" href="styles/Style.css">
+        <link rel="stylesheet" type="text/css" href="styles/app.css">
         
     </head>
     <body>
@@ -68,9 +69,11 @@
                 miConexion = DriverManager.getConnection(globalvariables.db,globalvariables.user, globalvariables.password);
                 
                 st = miConexion.createStatement();
-                traerDatos = traerDatos + "\"Productos\";";
+                traerDatos = traerDatos + "\"Productos\" ORDER BY \"Prod_Id\" ASC;";
                 ResultSet result = st.executeQuery(traerDatos);
+                int i = 0;
                 while(result.next()){
+                    i++;
                     prod_Id = result.getString("Prod_Id");
                     prod_Nombre = result.getString("Prod_Nombre");
                     prod_Costo = result.getString("Prod_Costo");
@@ -95,8 +98,8 @@
         %>
         
         
-            <div class = "anuncio">
-                <img src="IMAGES/Llanta.jpg" alt="Anuncio de producto">
+            <div class = "anuncio"  align="center">
+                <img class="tamanioprod" src="IMAGES/productos/producto<%=+i%>.jpg" alt="Anuncio de producto">
                 <div class="contenido-anuncio">
                     <h3><%=producto.getProducto() %></h3>
                     <p>producto de calidad

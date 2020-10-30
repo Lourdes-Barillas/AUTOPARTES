@@ -71,8 +71,8 @@ public final class Usuarios_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <ul class=\" list-unstyled contenedor section\">\n");
       out.write("        ");
 
-            String traerDatos = "SELECT * FROM PUBLIC.";
-            String usuarioId, tipocliente;
+            String traerDatos = "SELECT * FROM PUBLIC.\"Clientes\";";
+            String usuarioId, tipocliente, Cliente_Id;
             Cliente cliente = null;
             GlobalVariables globalvariables = new GlobalVariables();
             
@@ -83,27 +83,57 @@ public final class Usuarios_jsp extends org.apache.jasper.runtime.HttpJspBase
                 miConexion = DriverManager.getConnection(globalvariables.db, globalvariables.user, globalvariables.password);
 
                 st =  miConexion.createStatement();
-                traerDatos = traerDatos + "\"Clientes\";";
                 ResultSet result = st.executeQuery(traerDatos);
+                int i = 0;
                 while(result.next()){
-                    //--------------------------------------------------------------
-                    cliente = new Cliente(Integer.parseInt(result.getString("Cliente_UsuarioId")), result.getString("Cliente_TipoCliente"));
-                    //--------------------------------------------------------------
-                    
+                    i++;
+                    usuarioId = result.getString("Cliente_UsuarioId");
+                    tipocliente = result.getString("Cliente_TipoCliente");
+                    Cliente_Id = result.getString("Cliente_Id");
                     
       out.write("\n");
       out.write("                    <li class=\"media orden\">\n");
-      out.write("                      <img src=\"IMAGES/Aros.jpg\" class=\"mr-3\" alt=\"...\">\n");
+      out.write("                      <img src=\"IMAGES/usuarios/usuario");
+      out.print(+i);
+      out.write(".jpg\" class=\"mr-3\" alt=\"...\">\n");
       out.write("                      <div class=\"media-body\">\n");
       out.write("                          <h5 class=\"mt-0 mb-1\">");
-      out.print(cliente.getIdDeUsuario() );
+      out.print(usuarioId);
       out.write("</h5>\n");
       out.write("                          <h5 class=\"mt-0 \">");
-      out.print(cliente.getClienteobtenido() );
+      out.print(tipocliente );
       out.write("</h5>\n");
       out.write("                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.\n");
       out.write("                      </div>\n");
+      out.write("                        ");
+
+                              //si es 0 o si es 1
+                              if(result.getString("Cliente_Estado").equals("1")){
+                          
+      out.write("\n");
+      out.write("                        <div class=\"contenido-anuncio\">\n");
+      out.write("                            <a href=\"EditarUsuario.jsp?Cliente_Id=");
+      out.print(Cliente_Id);
+      out.write("\" class=\"boton boton-amarillo d-block\">Dar de baja</a>\n");
+      out.write("\n");
+      out.write("                        </div>\n");
+      out.write("                          ");
+
+                              }else if (result.getString("Cliente_Estado").equals("0")){
+                          
+      out.write("\n");
+      out.write("                        <div class=\"contenido-anuncio\">\n");
+      out.write("                            <a href=\"DardebajaUsuario.jsp?Cliente_Id=");
+      out.print(Cliente_Id);
+      out.write("\" class=\"boton boton-amarillo d-block\">Dar de alta</a>\n");
+      out.write("\n");
+      out.write("                        </div>\n");
       out.write("                    </li>\n");
+      out.write("                    ");
+
+                        }//fin if
+                    
+      out.write("\n");
       out.write("                    ");
 
                 }

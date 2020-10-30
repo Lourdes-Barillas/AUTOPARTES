@@ -25,8 +25,8 @@
         <main class="listado orden">
         <ul class=" list-unstyled contenedor section">
         <%
-            String traerDatos = "SELECT * FROM PUBLIC.\"Clientes\";";
-            String usuarioId, tipocliente;
+            String traerDatos = "SELECT * FROM PUBLIC.\"Clientes\" ORDER BY \"Cliente_Id\" ASC;";
+            String usuarioId, tipocliente, Cliente_Id;
             Cliente cliente = null;
             GlobalVariables globalvariables = new GlobalVariables();
             
@@ -43,15 +43,36 @@
                     i++;
                     usuarioId = result.getString("Cliente_UsuarioId");
                     tipocliente = result.getString("Cliente_TipoCliente");
+                    Cliente_Id = result.getString("Cliente_Id");
                     %>
                     <li class="media orden">
                       <img src="IMAGES/usuarios/usuario<%=+i%>.jpg" class="mr-3" alt="...">
                       <div class="media-body">
                           <h5 class="mt-0 mb-1"><%=usuarioId%></h5>
                           <h5 class="mt-0 "><%=tipocliente %></h5>
+                          <h5 class="mt-0 "><%=result.getString("Cliente_Id") %></h5>
+                          <h5 class="mt-0 ">Estado: <%=" "+result.getString("Cliente_Estado") %></h5>
                         Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
                       </div>
+                        <%
+                              //si es 0 o si es 1
+                              if(result.getString("Cliente_Estado").equals("1")){
+                          %>
+                        <div class="contenido-anuncio">
+                            <a href="DardebajaUsuarios.jsp?Cliente_Id=<%=Cliente_Id%>" class="boton boton-amarillo d-block">Dar de baja</a>
+
+                        </div>
+                          <%
+                              }else if (result.getString("Cliente_Estado").equals("0")){
+                          %>
+                        <div class="contenido-anuncio">
+                            <a href="DardealtaUsuario.jsp?Cliente_Id=<%=Cliente_Id%>" class="boton boton-amarillo d-block">Dar de alta</a>
+
+                        </div>
                     </li>
+                    <%
+                        }//fin if
+                    %>
                     <%
                 }
                 result.close();

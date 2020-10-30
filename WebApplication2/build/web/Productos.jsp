@@ -39,7 +39,7 @@
                 miConexion = DriverManager.getConnection(globalvariables.db, globalvariables.user, globalvariables.password);
 
                 st =  miConexion.createStatement();
-                traerDatos = traerDatos + "\"Productos\";";
+                traerDatos = traerDatos + "\"Productos\" ORDER BY \"Prod_Id\" ASC;";
                 ResultSet result = st.executeQuery(traerDatos);
                 int j = 0;
                 while(result.next()){
@@ -65,18 +65,31 @@
                       </div>
                           <%
                               //si es 0 o si es 1
+                              if(result.getString("Prod_Estado").equals("1")){
                           %>
                         <div class="contenido-anuncio">
                             <a href="Editar.jsp?Prod_Id=<%=producto.getIdProducto()%>" class="boton boton-amarillo d-block">Dar de baja</a>
 
                         </div>
-                            <%
-                              
-                          %>
-                      <div class="contenido-anuncio">
+                        <div class="contenido-anuncio">
                             <a href="Verproducto.jsp?Prod_Id=<%=producto.getIdProducto()%>" class="boton boton-amarillo d-block">Ver producto</a>
-                      </div>
+                        </div>
+                          <%
+                              }else if (result.getString("Prod_Estado").equals("0")){
+                          %>
+                        <div class="contenido-anuncio">
+                            <a href="Dardebaja.jsp?Prod_Id=<%=producto.getIdProducto()%>" class="boton boton-amarillo d-block">Dar de alta</a>
+
+                        </div>
+                        <div class="contenido-anuncio">
+                            <a href="index.jsp" class="boton boton-amarillo d-block">Ver publicación</a>
+                        </div>
                     </li>
+                    <%
+                        }//fin if
+                    %>
+                      
+                    
                     <%
                 }
                 result.close();
