@@ -63,22 +63,26 @@ public final class AgregarProducto_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"styles/Style.css\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\" integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\" crossorigin=\"anonymous\">\n");
       out.write("        \n");
+      out.write("        \n");
+      out.write("        \n");
       out.write("        <title>Autopartes</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <main align=\"center\" class=\"orden contenedor listado centrado\">\n");
-      out.write("            <form action=\"AgregarProducto.jsp\">\n");
-      out.write("                <div class=\"form-group\">\n");
-      out.write("                  <label for=\"formGroupExampleInput\">Nombre del producto</label>\n");
-      out.write("                  <input name=\"txtnombre\" type=\"text\" class=\"form-control\" id=\"formGroupExampleInput\">\n");
+      out.write("        <main>\n");
+      out.write("            <div class=\"centrado listado orden pad\" align=\"center\">\n");
+      out.write("                <form action=\"AgregarProducto.jsp\" class=\"orden form-alineado\">\n");
+      out.write("                <h1>Agregar Producto</h1>\n");
+      out.write("                <div class=\"form-group row\">\n");
+      out.write("                  <label align=\"left\" for=\"formGroupExampleInput\">Nombre del producto</label>\n");
+      out.write("                  <input align=\"right\" name=\"txtnombre\" type=\"text\" class=\"form-control\" >\n");
       out.write("                </div>\n");
-      out.write("                <div class=\"form-group\">\n");
-      out.write("                  <label for=\"formGroupExampleInput2\">Costo</label>\n");
-      out.write("                  <input name=\"txtcosto\" type=\"text\" class=\"form-control\" id=\"formGroupExampleInput2\">\n");
+      out.write("                <div class=\"form-group row\">\n");
+      out.write("                  <label align=\"left\" for=\"formGroupExampleInput2\">Costo</label>\n");
+      out.write("                  <input align=\"right\"  placeholder=\"Puedes escribir en decimal\" name=\"txtcosto\" type=\"text\" class=\"form-control\">\n");
       out.write("                </div>\n");
-      out.write("                <div class=\"form-group\">\n");
-      out.write("                  <label for=\"formGroupExampleInput2\">Existencia</label>\n");
-      out.write("                  <input name=\"txtexistencia\" type=\"text\" class=\"form-control\" id=\"formGroupExampleInput2\" >\n");
+      out.write("                <div class=\"form-group row\">\n");
+      out.write("                  <label align=\"left\" for=\"formGroupExampleInput2\">Existencia</label>\n");
+      out.write("                  <input align=\"right\" placeholder=\"No escribas en decimal\" name=\"txtexistencia\" type=\"text\" class=\"form-control\">\n");
       out.write("                </div>\n");
       out.write("                ");
 
@@ -109,15 +113,15 @@ public final class AgregarProducto_jsp extends org.apache.jasper.runtime.HttpJsp
                                     System.out.println(e.getMessage());
                                 }//fin catch 2
                             } catch (Exception e) {
-                                
-      out.print(e );
-
                             }//fin catch 1
                 
       out.write("\n");
-      out.write("                <button type=\"submit\" class=\"btn btn-primary\">Agregar</button>\n");
-      out.write("            </form>\n");
+      out.write("                <div class=\"col-sm-10\" align=\"center\">\n");
+      out.write("                    <button align=\"center\" type=\"submit\" class=\"btn btn-primary\">Agregar</button>\n");
+      out.write("                </div>\n");
       out.write("                \n");
+      out.write("            </form>\n");
+      out.write("            </div>    \n");
       out.write("        </main>\n");
       out.write("    </body>\n");
       out.write("</html>\n");

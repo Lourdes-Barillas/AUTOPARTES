@@ -122,7 +122,7 @@ public class Prueba {
         _dias=2;
         Orden orden = new Orden(_idCliente, _precioEnvio, _tipoEnvio, _estado, _dias);
         Create create = new Create();
-        create.insertOrden(orden);
+        //create.insertOrden(orden);
     }
     
     public void insertItemOrden(){

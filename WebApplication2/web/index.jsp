@@ -42,8 +42,6 @@
                 </div>
             <div class="logo">AutoPartes</div> 
                 <nav>
-                    
-                    <a href="realizarCompra.jsp">Carrito</a>
                     <a href="inicioSesion.jsp">Ordenes</a>
                 </nav>
             </div>
@@ -54,7 +52,9 @@
     <main class="section contenedor">
         <a href="AgregarProducto.jsp" class="boton boton-amarillo d-block">Agregar un producto</a>
         <h2 class= "fw-300 centrar-texto">Productos en venta</h2>
-        <div class="contenedor-anuncios">
+        
+        <form action="addOrden.jsp">
+            <div class="contenedor-anuncios">
         <%
             String prod_Id = "", prod_Nombre = "", prod_Costo = "", prod_Existencia = "",name;
             Producto producto = null;
@@ -83,22 +83,10 @@
                     producto = new Producto(Integer.parseInt(prod_Id), prod_Nombre, Double.parseDouble(prod_Costo));
                     producto.setCantidad(Integer.parseInt(prod_Existencia));
                     //--------------------------------------------------------------
-                    //productos.add(producto);
-                    ImageIcon image = null;
-                    InputStream input;
-                    Image img = null;
-                    try {
-                            input = result.getBinaryStream(5);
-                            BufferedImage bi = ImageIO.read(input);
-                            image = new ImageIcon(bi);
-                            img = image.getImage();
-                    } catch (Exception e) {
-                        System.out.println(e);
-                    }
                     
         %>
         
-        <form action="addOrden.jsp">
+        
             <div class = "anuncio"  align="center">
                 <img class="tamanioprod" src="IMAGES/productos/producto<%=+i%>.jpg" alt="Anuncio de producto">
                 <div class="contenido-anuncio">
@@ -108,10 +96,12 @@
                     </p>
                     <p class="precio">Q. <%=Double.parseDouble(prod_Costo) %></p>
                     <%--<button class="boton boton-amarillo d-block" type="submit">agregar </button>  --%>
-                    <a href="addOrden.jsp?name=<%=result.getString("Prod_Nombre")%>" class="boton boton-amarillo d-block">Comprar</a>
-                </div><!-- Contenido anuncio -->
+                    <div class="contenido-anuncio">
+                            <a href="addOrden.jsp?Prod_Nombre=<%=producto.getProducto()%>" class="boton boton-amarillo d-block">Comprar</a>
+
+                    </div>                </div><!-- Contenido anuncio -->
             </div><!-- Anuncio -->
-            </form>
+            
          <%  
                 }//while
                 result.close();
@@ -122,18 +112,20 @@
             }
             
         %> 
-        </div>
+            </div>
+        </form>
+        
     </main>
           
         <%-- pie de pagina--%> 
         <footer class="site-footer seccion">
             <div class="contenedor contenedor-footer">
                 <nav class="navegacion">
-                    <a href="anuncios.html">Anuncios</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="contacto.html">Contacto</a>
+                    <a href="inicioSesion.jsp">Ordenes</a>
+                    
                 </nav>
                 <p class="copyright">Todos los derechos reservados 2019 &copy;</p>
+                <p class="copyright">Lourdes Pérez y Esaú de León</p>
             </div>
         </footer>
     

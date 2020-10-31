@@ -48,9 +48,9 @@
                     <li class="media orden">
                       <img src="IMAGES/usuarios/usuario<%=+i%>.jpg" class="mr-3" alt="...">
                       <div class="media-body">
-                          <h5 class="mt-0 mb-1"><%=usuarioId%></h5>
-                          <h5 class="mt-0 "><%=tipocliente %></h5>
-                          <h5 class="mt-0 "><%=result.getString("Cliente_Id") %></h5>
+                          <h5 class="mt-0 mb-1">Id de usuario:<%=" "+usuarioId%></h5>
+                          <h5 class="mt-0 ">Tipo de Cliente: <%=" "+tipocliente %></h5>
+                          <h5 class="mt-0 ">Id de cliente: <%=" "+result.getString("Cliente_Id") %></h5>
                           <h5 class="mt-0 ">Estado: <%=" "+result.getString("Cliente_Estado") %></h5>
                         Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
                       </div>
@@ -84,15 +84,18 @@
           </ul>
         </main>
           
+        <%-- pie de pagina--%> 
         <footer class="site-footer seccion">
             <div class="contenedor contenedor-footer">
                 <nav class="navegacion">
-                    <a href="anuncios.html">Anuncios</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="contacto.html">Contacto</a>
+                    <a href="listaOrdenes.jsp">Ordenes</a>
+                    
                 </nav>
                 <p class="copyright">Todos los derechos reservados 2019 &copy;</p>
+                <p class="copyright">Lourdes Pérez y Esaú de León</p>
             </div>
         </footer>
+    
+        <%-- --%>
     </body>
 </html>

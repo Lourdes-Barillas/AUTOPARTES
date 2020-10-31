@@ -24,8 +24,12 @@
     
     
     <body>
-        <main class="listado orden">
-        <ul class=" list-unstyled contenedor section">
+        <main class="orden centrado">
+            <h1 align="center" class="centrado">REGISTROS DE ORDENES</h1>
+            <h1 align="center" class="centrado">_____________________________________</h1>
+        <ul class=" list-unstyled contenedor section contenedor-anuncios">
+            
+
         <%
         String traerDatos = "SELECT * FROM PUBLIC.";
         GlobalVariables globalvariables = new GlobalVariables();
@@ -40,7 +44,7 @@
             miConexion = DriverManager.getConnection(globalvariables.db, globalvariables.user, globalvariables.password);
             
             st =  miConexion.createStatement();
-            traerDatos = traerDatos + "\"Orden\";";
+            traerDatos = traerDatos + "\"Orden\" ORDER BY \"Orden_Id\" ASC;";
             ResultSet result = st.executeQuery(traerDatos);
             while(result.next()){
                 Orden_Id = result.getString("Orden_Id");
@@ -59,14 +63,22 @@
                 orden.setFecha(Orden_Fecha);
                 orden.setId(Integer.parseInt(Orden_Id));
             %>
-            <li class="media orden">
-              <img src="IMAGES/Aros.jpg" class="mr-3" alt="...">
-              <div class="media-body">
-                  <h5 class="mt-0 mb-1"><%=orden.getIdCliente() %></h5>
-                  <h5 class="mt-0 "><%=orden.getTipoEnvio() %></h5>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              </div>
-            </li>
+            
+            
+                <div class="anuncio" align="">
+                    
+                          <div class="contenido-anuncio">
+                          <img src="IMAGES/ImaOrdenes/ordenes3.jpg" id="ima" >
+                          <h5 class="">Cliente: <%=" " + orden.getIdCliente() %></h5>
+                          <h5 class="">Tipo de envío: <%=" " + orden.getTipoEnvio() %></h5>
+                          <h5 class="">Fecha: <%=" " + orden.getFecha() %></h5>
+                          <h5 class="">Estado: <%=" " + Orden_Estado%></h5>
+                          <h5 class="">Dias de envio: <%=" " + Orden_DiasEnvio%></h5>
+                          <h5 class=""><%=" " + "" %></h5>
+                          </div>
+                      </td>
+                </div>
+            
             <%
                 }
                 result.close();
@@ -76,17 +88,21 @@
             }
             %>
           </ul>
+          
         </main>
           
+        <%-- pie de pagina--%> 
         <footer class="site-footer seccion">
             <div class="contenedor contenedor-footer">
                 <nav class="navegacion">
-                    <a href="anuncios.html">Anuncios</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="contacto.html">Contacto</a>
+                    <a href="menuadmin.jsp">Menú de administrador</a>
+                    
                 </nav>
                 <p class="copyright">Todos los derechos reservados 2019 &copy;</p>
+                <p class="copyright">Lourdes Pérez y Esaú de León</p>
             </div>
         </footer>
+    
+        <%-- --%>
     </body>
 </html>

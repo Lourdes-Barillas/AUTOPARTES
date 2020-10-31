@@ -196,7 +196,7 @@ public class Create {
      * 
      * @param item 
      */
-    public void insertOrden(Orden orden) {
+    public void insertOrden(Orden orden, String producto) {
         //Insertamos la orden
         
         //la consulta será INSERT INTO PRODUCTOS VALUES
@@ -211,7 +211,8 @@ public class Create {
             values = values + ""+orden.getEstado()+ ", ";//3
             values = values + ""+orden.getdiasEnvio()+ ", ";//4
             values = values + "'" + orden.getFecha() + "', ";//5
-            values = values + "" + orden.getPrecioDeEnvio() + ");";//6
+            values = values + "'" + producto + "', ";//6
+            values = values + "" + orden.getPrecioDeEnvio() + ");";//7
             String consulta = "INSERT INTO " 
                 + "public.\"Orden\" "
                     + "(\"Orden_ClienteId\","//1
@@ -219,7 +220,8 @@ public class Create {
                     + "\"Orden_Estado\", "//3
                     + "\"Orden_DiasEnvio\", "//4
                     + "\"Orden_Fecha\", "//5
-                    + "\"Orden_PrecioDeEnvio\") " //6
+                    + "\"Orden_Producto\", "//6
+                    + "\"Orden_PrecioDeEnvio\") " //7
                 + values;
             boolean insertado = miStatement.execute(consulta);
         } catch (Exception e) {

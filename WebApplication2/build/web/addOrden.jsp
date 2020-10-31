@@ -29,8 +29,9 @@
         --%>
 </head>
     <body>
-       
+        
         <%  
+            String prodR=request.getParameter("Prod_Nombre");
            GlobalVariables globalvariables = new GlobalVariables();
             String tipoenvio = request.getParameter("tipo");
             String diasenvio = request.getParameter("dias");
@@ -38,7 +39,7 @@
             String pass = request.getParameter("pass");
             String link;
              Class.forName("org.postgresql.Driver");
-            String prodR=request.getParameter("Prod_Nombre");
+            
             PreparedStatement ps;
             String obtP =request.getParameter("name");
             ps=globalvariables.connection().prepareStatement("SELECT * FROM PUBLIC.\"Productos\" WHERE \"Prod_Nombre\"=" + prodR + ";");
@@ -48,14 +49,8 @@
             if((user==null && pass==null && tipoenvio==null && diasenvio==null)||showform){
         %>
         <%if(obtP!=null){%>
-    <center><h2 class="ctt">Usted deses comprar <%=obtP%></h2></center>
-        <%}%>
-        <div class="pwrapper">
-           
-        <div class="">
-            <div class="orden contenedor listado">
-            <form  action="addOrden.jsp" >
-                 <h1 class="tituloProd">Iniciar Sesion</h1>
+    
+                <h1 class="tituloProd">Iniciar Sesion</h1>
                 <label>nombre</label><br/>
                 <input type="text" class="field" name="user" id="user"><br/><br/>
                 
@@ -92,7 +87,7 @@
             traerDatos = traerDatos + "\"Usuarios\";";
             ResultSet result = st.executeQuery(traerDatos);
             while(result.next()){
-                IdUsuarios = result.getString("IdUsuarios");
+                IdUsuarios = result.getString("Usuario_Id");
                 Usuario_Nombre = result.getString("Usuario_Nombre");
                 Usuario_Contrasenia = result.getString("Usuario_Contrasenia");
                 usuario = new Usuario(Integer.parseInt(IdUsuarios),Usuario_Nombre,Usuario_Contrasenia) ;
@@ -116,12 +111,13 @@
                         if(request.getParameter("boxE")!=null){
                         Orden o ;
                         o=new Orden(Integer.parseInt(IdUsuarios) ,0.0, "Envio a bodega",1,0);
-                        cr.insertOrden(o);      
+                        cr.insertOrden(o, prodR);      
                         }
                         if(request.getParameter("boxI")!=null){
                         Orden o ;
                         o=new Orden(Integer.parseInt(IdUsuarios) ,25.0, "Envio a domicilio",1,Integer.parseInt(diasenvio));
-                        cr.insertOrden(o);      
+
+                        cr.insertOrden(o, prodR);      
                         
                         }
                         %>

@@ -60,14 +60,18 @@ public final class listaOrdenes_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"styles/app.css\">\n");
+      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"styles/Style.css\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\" integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\" crossorigin=\"anonymous\">\n");
-      out.write("        <link rel=\"stylesheet\" href=\"Style.css\">\n");
+      out.write("        \n");
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    \n");
       out.write("    \n");
       out.write("    <body>\n");
-      out.write("        <ul class=\"list-unstyled contenedor section\">\n");
+      out.write("        <main class=\"orden\">\n");
+      out.write("        <ul class=\" list-unstyled contenedor section\">\n");
+      out.write("            <table class=\"table\">\n");
       out.write("        ");
 
         String traerDatos = "SELECT * FROM PUBLIC.";
@@ -101,20 +105,34 @@ public final class listaOrdenes_jsp extends org.apache.jasper.runtime.HttpJspBas
                                     Integer.parseInt(Orden_DiasEnvio));
                 orden.setFecha(Orden_Fecha);
                 orden.setId(Integer.parseInt(Orden_Id));
-        
+            
       out.write("\n");
-      out.write("            <li class=\"media\">\n");
-      out.write("              <img src=\"...\" class=\"mr-3\" alt=\"...\">\n");
-      out.write("              <div class=\"media-body\">\n");
-      out.write("                  <h5 class=\"mt-0 mb-1\">");
+      out.write("            \n");
+      out.write("            \n");
+      out.write("                <tr class=\"\">\n");
+      out.write("                    <td>jsfamsfdajsd</td>\n");
+      out.write("                    <td>jsfamsfdajsd</td>\n");
+      out.write("                      <td class=\"\">\n");
+      out.write("                          <div class=\"contenido-anuncio\">\n");
+      out.write("                          <h5 class=\"\">");
       out.print(orden.getIdCliente() );
       out.write("</h5>\n");
-      out.write("                  <h5 class=\"mt-0 \">");
+      out.write("                          <h5 class=\"\">");
       out.print(orden.getTipoEnvio() );
       out.write("</h5>\n");
-      out.write("                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.\n");
-      out.write("              </div>\n");
-      out.write("            </li>\n");
+      out.write("                          <h5 class=\"\">");
+      out.print(orden.getFecha() );
+      out.write("</h5>\n");
+      out.write("                          <h5 class=\"\">");
+      out.print(result.getString("Orden_Producto") );
+      out.write("</h5>\n");
+      out.write("                          <h5 class=\"\">");
+      out.print("" );
+      out.write("</h5>\n");
+      out.write("                          </div>\n");
+      out.write("                      </td>\n");
+      out.write("                </tr>\n");
+      out.write("            \n");
       out.write("            ");
 
                 }
@@ -125,7 +143,26 @@ public final class listaOrdenes_jsp extends org.apache.jasper.runtime.HttpJspBas
             }
             
       out.write("\n");
+      out.write("            </table>\n");
       out.write("          </ul>\n");
+      out.write("          \n");
+      out.write("        </main>\n");
+      out.write("          \n");
+      out.write("        ");
+      out.write(" \n");
+      out.write("        <footer class=\"site-footer seccion\">\n");
+      out.write("            <div class=\"contenedor contenedor-footer\">\n");
+      out.write("                <nav class=\"navegacion\">\n");
+      out.write("                    <a href=\"menuadmin.jsp\">Menú de administrador</a>\n");
+      out.write("                    \n");
+      out.write("                </nav>\n");
+      out.write("                <p class=\"copyright\">Todos los derechos reservados 2019 &copy;</p>\n");
+      out.write("                <p class=\"copyright\">Lourdes Pérez y Esaú de León</p>\n");
+      out.write("            </div>\n");
+      out.write("        </footer>\n");
+      out.write("    \n");
+      out.write("        ");
+      out.write("\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

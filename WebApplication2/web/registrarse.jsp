@@ -23,8 +23,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <main class="contenedor">
-            <form action="registrarse.jsp">
+        <main class="orden contenedor listado centrado" align="left">
+            <h1 align="center">Registrarse</h1>
+            <form class="orden form-alineado" action="registrarse.jsp">
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="inputEmail4">Usuario</label>
@@ -49,15 +50,17 @@
                       Persona como cliente
                     </label>
                   </div>
-                  <div class="form-check">
+                  <div class="form-check listado">
                     <input class="form-check-input" name="checkboxEmpresa" type="checkbox" id="gridCheck">
                     <label class="form-check-label" for="gridCheck">
                       Empresa
                     </label>
-                  </div><div class="form-group col-md-6">
-                    <label for="inputEmail4">Dpi o Contacto</label>
-                    <input type="text" class="form-control" name="textContD" placeholder="Si eres una empresa, escribe tu e-mail, sino tu DPI" id="inputEmail4">
                   </div>
+                    <div class="form-group">
+                    <div class="">
+                        <input type="text" class="form-control" name="textContD" placeholder="Si eres una empresa, escribe tu e-mail, sino tu DPI" id="inputEmail4">
+                    </div>
+                    </div>
                 </div>
                 <%--Checkboxes--%>
                 <%
@@ -82,9 +85,7 @@
                             String id = null;
                             GlobalVariables globalvariables = new GlobalVariables();
                             Connection miConexion = globalvariables.connection();
-
                             Class.forName("org.postgresql.Driver");
-
                             Statement st = miConexion.createStatement();
                             String traerDatos = "SELECT * FROM PUBLIC.\"Usuarios\";", contacto=null;
                             ResultSet result = st.executeQuery(traerDatos);
@@ -106,9 +107,7 @@
                             String id = null;
                             GlobalVariables globalvariables = new GlobalVariables();
                             Connection miConexion = globalvariables.connection();
-
                             Class.forName("org.postgresql.Driver");
-
                             Statement st = miConexion.createStatement();
                             String traerDatos = "SELECT * FROM PUBLIC.\"Usuarios\";", contacto=null;
                             ResultSet result = st.executeQuery(traerDatos);
@@ -124,10 +123,11 @@
                     }//fin if
                 }//fintry
                 catch(Exception e){
-
                 }//fin catch
                 %>
-                <button type="submit" class="btn btn-primary">Siguiente...</button>
+                <div align="center">
+                    <button type="submit" class="btn btn-primary">Siguiente...</button>
+                </div>
                 <%
                     
                 %>

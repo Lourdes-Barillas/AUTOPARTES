@@ -101,15 +101,18 @@
           </ul>
         </main>
           
+        <%-- pie de pagina--%> 
         <footer class="site-footer seccion">
             <div class="contenedor contenedor-footer">
                 <nav class="navegacion">
-                    <a href="anuncios.html">Anuncios</a>
-                    <a href="blog.html">Blog</a>
-                    <a href="contacto.html">Contacto</a>
+                    <a href="listaOrdenes.jsp">Ordenes</a>
+                    
                 </nav>
                 <p class="copyright">Todos los derechos reservados 2019 &copy;</p>
+                <p class="copyright">Lourdes Pérez y Esaú de León</p>
             </div>
         </footer>
+    
+        <%-- --%>
     </body>
 </html>
